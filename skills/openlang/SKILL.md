@@ -65,13 +65,17 @@ Bind with `->$name`, use with `$name`. Property access: `$var.field.sub`.
 
 **Modifiers:** `rec` recursive · `par` parallel · `seq` sequential · `dry` dry-run · `frc` force · `tmp` temp · `vrb` verbose · `sil` silent · `lmt` limit · `dep` depth · `pri` priority · `unq` unique · `neg` negate
 
-**Qualifiers** describe state. Place **before** the param block, after the scope. Stack left-to-right:
+**Qualifiers** describe state. Place **before** the param block, after the scope. Stack freely — combine as many as needed. Param block `{}` is optional if qualifiers are sufficient:
 
 ```
 ?fnd @fs chg rcn {p:"src/**"}           -- changed + recent files
+?fnd @fs chg rcn lrg {p:"**/*" p:!~"node_modules/**"}  -- changed + recent + large
+?fnd @net act hlt                        -- active + healthy (no params needed)
 ?fnd @db fld rcn {tbl:"trades" lmt:50}  -- failed + recent trades
-#sys {cpu:idl mem:45% disk:hlt net:act}  -- in state blocks, qualifiers are values
+#sys {cpu:idl mem:45% disk:hlt net:act}  -- in # blocks, qualifiers are values
 ```
+
+Qualifier meanings: `rcn` recent · `lrg` large · `sml` small · `chg` changed · `stl` stale (outdated) · `nw` new · `old` old · `act` active · `idl` idle · `fld` failed · `hlt` healthy · `hot` frequently accessed · `cld` rarely accessed
 
 **Types:** `str` · `int` · `bln` · `lst` · `map` · `fn` · `pth` · `rgx` · `err` · `nul`
 
@@ -120,6 +124,9 @@ Bind with `->$name`, use with `$name`. Property access: `$var.field.sub`.
 ^frk:scan !fnd @fs {p:"src/**" rgx:"TODO"}
 ^frk:test !tst @sh {cmd:"vitest"}
 ^jn [scan,test] ^tmo:60 ->$results
+
+-- Wait with timeout and failure handling:
+^wt {cond:ready} ^tmo:120 ^el {~err {code:E_TIMEOUT lvl:fatal msg:"ready timeout"}}
 ```
 
 ## Composition

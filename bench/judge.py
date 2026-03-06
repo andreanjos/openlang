@@ -154,6 +154,16 @@ Score the response:
 - 1 = partially correct (gist is right but details wrong, or minor syntax issues)
 - 0 = wrong (misunderstood, invalid, or nonsensical)
 
+IMPORTANT scoring guidelines:
+- If the response conveys the same meaning as expected using valid alternative syntax, score 2.
+- Adding optional fields (like msg:"..." in errors) is NOT a penalty — score 2.
+- Using ~L2: prefix or omitting it are both valid — do not penalize either.
+- Semicolons and ^seq both express sequential execution — both score 2.
+- Scoped actions (!git:mrg) and generic+scope (!mrg @git) are both valid — score 2 for either.
+- Extra backtick quoting in L3 is overcautious but valid — score 2.
+- Only score 1 if actual meaning is lost or key details are wrong.
+- Only score 0 if the response is fundamentally wrong or incomprehensible.
+
 You MUST respond with ONLY this JSON object and nothing else:
 {"score": N, "reason": "brief explanation"}"""
 

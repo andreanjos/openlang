@@ -1,0 +1,730 @@
+{
+  "model": "claude-sonnet-4-6",
+  "timestamp": "2026-03-05T21:23:30.899462",
+  "summary": {
+    "comprehension": {
+      "total": 35,
+      "correct": 0,
+      "partial": 0,
+      "failed": 35,
+      "pct": 0.0
+    },
+    "generation": {
+      "total": 35,
+      "correct": 0,
+      "partial": 0,
+      "failed": 35,
+      "pct": 0.0
+    },
+    "roundtrip": {
+      "total": 30,
+      "correct": 0,
+      "partial": 0,
+      "failed": 30,
+      "pct": 0.0
+    }
+  },
+  "overall_pct": 0.0,
+  "results": [
+    {
+      "test_id": "c01",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c02",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c03",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c04",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c05",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c06",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c07",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c08",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c09",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c10",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c11",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c12",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c13",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c14",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c15",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c16",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c17",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c18",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c19",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c20",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c21",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c22",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c23",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c24",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c25",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c26",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c27",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c28",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c29",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c30",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c31",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c32",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c33",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c34",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "c35",
+      "type": "comprehension",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g01",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g02",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g03",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g04",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g05",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g06",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g07",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g08",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g09",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g10",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g11",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g12",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g13",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g14",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g15",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g16",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g17",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g18",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g19",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g20",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g21",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g22",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g23",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g24",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g25",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g26",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g27",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g28",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g29",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g30",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g31",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g32",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g33",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g34",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "g35",
+      "type": "generation",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r01",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r02",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r03",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r04",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r05",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r06",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r07",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r08",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r09",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r10",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r11",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r12",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r13",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r14",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r15",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r16",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r17",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r18",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r19",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r20",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r21",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r22",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r23",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r24",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r25",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r26",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r27",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r28",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r29",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    },
+    {
+      "test_id": "r30",
+      "type": "roundtrip",
+      "score": 0,
+      "reason": "model error: \"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "response": ""
+    }
+  ]
+}

@@ -17,7 +17,7 @@ You are now an OpenLang speaker. Default to L2 for all agent-to-agent communicat
 
 Switch mid-message with `~L1:`, `~L2:`, `~L3:`. Unspecified = L2.
 
-## Sigils — Every Statement Starts With One
+## Sigils
 
 | Sigil | Intent | Example |
 |-------|--------|---------|
@@ -40,6 +40,15 @@ Bind with `->$name`, use with `$name`. Property access: `$var.field.sub`.
 ?rd @fs {p:"pkg.json"} ->$pkg; !run @sh {cmd:$pkg.scripts.test}
 ```
 
+## Negation
+
+`!~` before a param value excludes it. `neg` modifier negates conditions:
+
+```
+?fnd @fs {p:"src/**/*.ts" p:!~"*.test.ts"} ->$lst
+^if neg {$content.sz:0} {!prs @mem {src:$content}}
+```
+
 ## Vocabulary
 
 **Actions:** `fnd` find · `mk` make · `del` delete · `mod` modify · `rd` read · `wr` write · `run` exec · `cpy` copy · `mv` move · `mrg` merge · `tst` test · `vfy` verify · `prs` parse · `fmt` format · `snd` send · `rcv` receive
@@ -56,15 +65,6 @@ Bind with `->$name`, use with `$name`. Property access: `$var.field.sub`.
 
 **Status:** `ok` success · `fl` fail · `prt` partial · `pnd` pending · `skp` skipped · `blk` blocked
 
-## Negation
-
-`!~` before a param value excludes it. `neg` modifier negates conditions:
-
-```
-?fnd @fs {p:"src/**/*.ts" p:!~"*.test.ts"} ->$lst
-^if neg {$content.sz:0} {!prs @mem {src:$content}}
-```
-
 ## Control Flow
 
 ```
@@ -80,7 +80,7 @@ Bind with `->$name`, use with `$name`. Property access: `$var.field.sub`.
 
 ### Block Scoping
 
-Use `<< >>` for multi-statement bodies (optional — `{}` still works for single expressions):
+`<< >>` for multi-statement bodies. `{}` for single expressions:
 
 ```
 ^ea {$files} ->$f <<
@@ -147,36 +147,22 @@ Chain with `->` pipes, sequence with `;` or newlines:
 
 Codes: `E_PARSE` `E_FS_*` `E_SH_*` `E_NET_*` `E_DB_*` `E_AUTH`. Levels: `info` `warn` `fatal`.
 
-## Negotiation
+## Token Extension
 
 ```
 ~unk {tok:"xyz" req:def}             -- request definition
 ~def {tok:"xyz" means:"..."}         -- define inline
-~rej {id:x why:"unsupported"}        -- reject proposal
 ```
 
 ### Handshake
 
 ```
-~hello {id:bot1 ver:0.2 ~cap {L:[1,2,3] ext:[fs,git,sh] feat:[conc,qual]}}
-~hello {id:bot2 ver:0.1 ~cap {L:[1,2] ext:[fs,db]}}
-~sess {ver:0.1 feat:[base] degrade:[conc,qual]}
-~ack &sess
+~hello {id:bot1 ~cap {L:[1,2,3] ext:[fs,git,sh]} ver:0.2}
 ```
-
-Mid-session feature upgrade:
-
-```
-~feat:conc {~def {tok:"^frk" means:"fork named task"} ~def {tok:"^jn" means:"join tasks"}}
-~sess:upd {feat+:[conc]}
-~ack &sess:upd
-```
-
-Feature groups: `base` (v0.1) · `conc` (concurrency) · `qual` (qualifiers)
 
 ## L3 Bytecode
 
-Positional, period-delimited. Backtick-quote fields containing periods:
+Positional, period-delimited. Backtick-quote fields with periods:
 
 ```
 Q.fs.fnd.`app.config.ts`.rec
@@ -217,9 +203,8 @@ R.ok.3.[`src/a.ts`:5,`src/b.ts`:12]
 
 1. Default to L2. Always.
 2. Drop to L1 only when grammar can't express a concept. Return to L2 immediately.
-3. Use L3 only for repetitive/bulk ops between handshaked agents.
+3. Use L3 only for repetitive/bulk ops.
 4. Extend vocabulary with `~def` — don't break grammar for new ideas.
 5. Every message gets an `id`. Reference prior messages with `&id`.
 6. Prefer composing existing tokens over inventing new ones.
 7. Use `$` for all variable references. No bare variable names.
-8. Negotiate features via `~hello`/`~sess`. Degrade gracefully.

@@ -2,10 +2,10 @@
 """OpenLang Benchmark Runner.
 
 Usage:
-    python bench/run.py                      # Run all models
-    python bench/run.py --models claude gpt  # Specific models
-    python bench/run.py --concurrency 5      # Limit concurrency
-    python bench/run.py --judge claude       # Use Claude as judge (default)
+    python bench/run.py                        # Run all models
+    python bench/run.py --models claude codex  # Specific models
+    python bench/run.py --concurrency 5        # Limit concurrency
+    python bench/run.py --judge gemini         # Use Gemini as judge
 """
 
 import asyncio
@@ -15,7 +15,7 @@ import time
 from pathlib import Path
 from datetime import datetime
 
-from models import get_adapters, ClaudeAdapter, OpenAIAdapter, GeminiAdapter
+from models import get_adapters, CodexAdapter, GeminiAdapter
 from judge import score_test
 
 
@@ -55,14 +55,14 @@ async def run_test(
         prompt = make_prompt(test)
         try:
             response = await asyncio.wait_for(
-                adapter.complete(skill, prompt), timeout=30
+                adapter.complete(skill, prompt), timeout=90
             )
         except asyncio.TimeoutError:
             return {
                 "test_id": test["id"],
                 "type": test["type"],
                 "score": 0,
-                "reason": "timeout (30s)",
+                "reason": "timeout (90s)",
                 "response": "",
             }
         except Exception as e:
@@ -197,15 +197,15 @@ async def main():
     parser = argparse.ArgumentParser(description="OpenLang Benchmark")
     parser.add_argument(
         "--models", nargs="*", default=None,
-        help="Models to test (claude, gpt, gemini). Default: all available",
+        help="Models to test (claude, codex, gemini). Default: all",
     )
     parser.add_argument(
         "--concurrency", type=int, default=10,
         help="Max concurrent requests per model (default: 10)",
     )
     parser.add_argument(
-        "--judge", default="claude",
-        help="Judge model (claude, gpt, gemini). Default: claude",
+        "--judge", default="gemini",
+        help="Judge model (codex, gemini). Default: gemini",
     )
     args = parser.parse_args()
 
@@ -218,8 +218,7 @@ async def main():
 
     # Set up judge
     judge_map = {
-        "claude": lambda: ClaudeAdapter(),
-        "gpt": lambda: OpenAIAdapter(),
+        "codex": lambda: CodexAdapter(),
         "gemini": lambda: GeminiAdapter(),
     }
     judge_adapter = judge_map[args.judge]()

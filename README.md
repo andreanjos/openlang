@@ -63,21 +63,21 @@ Paste the contents of `skills/openlang/SKILL.md` into your agent's system prompt
 
 ### Skills
 
-| Skill | Target | Install |
-|-------|--------|---------|
-| Generic | Any LLM | `skills/openlang/SKILL.md` |
-| OpenClaw | OpenClaw agents | `npx clawhub install openlang` |
-| Claude Code | Claude Code | `/install-plugin https://github.com/andreanjos/openlang` |
-| Codex | OpenAI Codex | `install skill from andreanjos/openlang` |
-| Gemini | Google Gemini | `gemini skills install` from repo |
+| Skill       | Target          | Install                                                  |
+| ----------- | --------------- | -------------------------------------------------------- |
+| Generic     | Any LLM         | `skills/openlang/SKILL.md`                               |
+| OpenClaw    | OpenClaw agents | `npx clawhub install openlang`                           |
+| Claude Code | Claude Code     | `/install-plugin https://github.com/andreanjos/openlang` |
+| Codex       | OpenAI Codex    | `install skill from andreanjos/openlang`                 |
+| Gemini      | Google Gemini   | `gemini skills install` from repo                        |
 
 ## Compression Levels
 
-| Level | Name | Compression | Use Case |
-|-------|------|-------------|----------|
-| `~L1` | Pidgin | 3-5x | Novel concepts, nuance, fallback when grammar can't express something |
-| `~L2` | Glyph | 5-10x | Default working mode |
-| `~L3` | Bytecode | 10-15x | Repetitive ops, bulk data, known patterns |
+| Level | Name     | Compression | Use Case                                                              |
+| ----- | -------- | ----------- | --------------------------------------------------------------------- |
+| `~L1` | Pidgin   | 3-5x        | Novel concepts, nuance, fallback when grammar can't express something |
+| `~L2` | Glyph    | 5-10x       | Default working mode                                                  |
+| `~L3` | Bytecode | 10-15x      | Repetitive ops, bulk data, known patterns                             |
 
 Speakers shift between levels mid-message as needed. Default is L2 if unspecified.
 
@@ -87,29 +87,29 @@ Speakers shift between levels mid-message as needed. Default is L2 if unspecifie
 
 Every statement starts with a sigil declaring intent:
 
-| Sigil | Meaning | Example |
-|-------|---------|---------|
-| `?` | Query | `?fnd @fs {p:"src/*.ts"}` |
-| `!` | Command | `!del @fs {p:"tmp/"}` |
-| `>` | Result | `>ok {found:3 paths:[...]}` |
-| `#` | State/Data | `#ctx {lang:ts env:node deps:[react,next]}` |
-| `~` | Meta/Control | `~L2` `~ack` `~err:parse` |
-| `^` | Control Flow | `^if {cond} !do {x} ^el !do {y}` |
+| Sigil | Meaning      | Example                                     |
+| ----- | ------------ | ------------------------------------------- |
+| `?`   | Query        | `?fnd @fs {p:"src/*.ts"}`                   |
+| `!`   | Command      | `!del @fs {p:"tmp/"}`                       |
+| `>`   | Result       | `>ok {found:3 paths:[...]}`                 |
+| `#`   | State/Data   | `#ctx {lang:ts env:node deps:[react,next]}` |
+| `~`   | Meta/Control | `~L2` `~ack` `~err:parse`                   |
+| `^`   | Control Flow | `^if {cond} !do {x} ^el !do {y}`            |
 
 ### Structural Tokens
 
-| Token | Meaning |
-|-------|---------|
-| `@` | Target/scope |
-| `->` | Output format / pipe |
-| `{}` | Parameter block |
+| Token   | Meaning                                       |
+| ------- | --------------------------------------------- |
+| `@`     | Target/scope                                  |
+| `->`    | Output format / pipe                          |
+| `{}`    | Parameter block                               |
 | `<< >>` | Block scope (multi-statement / nested bodies) |
-| `[]` | List/array |
-| `()` | Grouping / precedence |
-| `\|` | Separator / alternative |
-| `..` | Range |
-| `::` | Type annotation |
-| `$` | Variable dereference |
+| `[]`    | List/array                                    |
+| `()`    | Grouping / precedence                         |
+| `\|`    | Separator / alternative                       |
+| `..`    | Range                                         |
+| `::`    | Type annotation                               |
+| `$`     | Variable dereference                          |
 
 ### Variables
 
@@ -155,52 +155,52 @@ Disambiguate actions across scopes with `scope:action`:
 
 ### Actions
 
-| Token | Meaning | Token | Meaning |
-|-------|---------|-------|---------|
-| `fnd` | find/search | `mk` | make/create |
-| `del` | delete | `mod` | modify/edit |
-| `rd` | read | `wr` | write |
-| `run` | execute | `cpy` | copy |
-| `mv` | move | `mrg` | merge |
-| `tst` | test | `vfy` | verify |
-| `prs` | parse | `fmt` | format |
-| `snd` | send | `rcv` | receive |
+| Token | Meaning     | Token | Meaning     |
+| ----- | ----------- | ----- | ----------- |
+| `fnd` | find/search | `mk`  | make/create |
+| `del` | delete      | `mod` | modify/edit |
+| `rd`  | read        | `wr`  | write       |
+| `run` | execute     | `cpy` | copy        |
+| `mv`  | move        | `mrg` | merge       |
+| `tst` | test        | `vfy` | verify      |
+| `prs` | parse       | `fmt` | format      |
+| `snd` | send        | `rcv` | receive     |
 
 ### Scopes (@targets)
 
-| Token | Meaning | Token | Meaning |
-|-------|---------|-------|---------|
-| `@fs` | filesystem | `@sh` | shell |
-| `@git` | git repo | `@net` | network/API |
-| `@db` | database | `@mem` | memory/context |
-| `@env` | environment | `@usr` | user |
-| `@proc` | process | `@pkg` | packages |
+| Token   | Meaning     | Token  | Meaning        |
+| ------- | ----------- | ------ | -------------- |
+| `@fs`   | filesystem  | `@sh`  | shell          |
+| `@git`  | git repo    | `@net` | network/API    |
+| `@db`   | database    | `@mem` | memory/context |
+| `@env`  | environment | `@usr` | user           |
+| `@proc` | process     | `@pkg` | packages       |
 
 ### Modifiers
 
-| Token | Meaning | Token | Meaning |
-|-------|---------|-------|---------|
-| `rec` | recursive | `par` | parallel |
-| `seq` | sequential | `dry` | dry run |
-| `frc` | force | `tmp` | temporary |
-| `vrb` | verbose | `sil` | silent |
-| `lmt` | limit | `dep` | depth |
-| `pri` | priority | `unq` | unique |
-| `neg` | negate/exclude | | |
+| Token | Meaning        | Token | Meaning   |
+| ----- | -------------- | ----- | --------- |
+| `rec` | recursive      | `par` | parallel  |
+| `seq` | sequential     | `dry` | dry run   |
+| `frc` | force          | `tmp` | temporary |
+| `vrb` | verbose        | `sil` | silent    |
+| `lmt` | limit          | `dep` | depth     |
+| `pri` | priority       | `unq` | unique    |
+| `neg` | negate/exclude |       |           |
 
 ### Qualifiers
 
 State descriptors that modify scopes or appear in `#` data blocks. Stack left-to-right:
 
-| Token | Meaning | Token | Meaning |
-|-------|---------|-------|---------|
-| `rcn` | recent | `lrg` | large |
-| `sml` | small | `chg` | changed |
-| `stl` | stale | `nw` | new |
-| `old` | old | `act` | active |
-| `idl` | idle | `fld` | failed |
-| `hlt` | healthy | `hot` | hot/frequent |
-| `cld` | cold/rare | | |
+| Token | Meaning   | Token | Meaning      |
+| ----- | --------- | ----- | ------------ |
+| `rcn` | recent    | `lrg` | large        |
+| `sml` | small     | `chg` | changed      |
+| `stl` | stale     | `nw`  | new          |
+| `old` | old       | `act` | active       |
+| `idl` | idle      | `fld` | failed       |
+| `hlt` | healthy   | `hot` | hot/frequent |
+| `cld` | cold/rare |       |              |
 
 ```
 ?fnd @fs chg rcn {p:"src/**/*.ts"}
@@ -209,19 +209,19 @@ State descriptors that modify scopes or appear in `#` data blocks. Stack left-to
 
 ### Types (:: annotations)
 
-| Token | Meaning | Token | Meaning |
-|-------|---------|-------|---------|
-| `str` | string | `int` | integer |
-| `bln` | boolean | `lst` | list |
-| `map` | key-value map | `fn` | function |
-| `pth` | path | `rgx` | regex |
-| `err` | error | `nul` | null/none |
+| Token | Meaning       | Token | Meaning   |
+| ----- | ------------- | ----- | --------- |
+| `str` | string        | `int` | integer   |
+| `bln` | boolean       | `lst` | list      |
+| `map` | key-value map | `fn`  | function  |
+| `pth` | path          | `rgx` | regex     |
+| `err` | error         | `nul` | null/none |
 
 ### Response Status
 
 | Token | Meaning | Token | Meaning |
-|-------|---------|-------|---------|
-| `ok` | success | `fl` | fail |
+| ----- | ------- | ----- | ------- |
+| `ok`  | success | `fl`  | fail    |
 | `prt` | partial | `pnd` | pending |
 | `skp` | skipped | `blk` | blocked |
 
@@ -243,16 +243,16 @@ State descriptors that modify scopes or appear in `#` data blocks. Stack left-to
 
 ### Concurrency
 
-| Token | Meaning | Usage |
-|-------|---------|-------|
-| `^frk:name` | Fork named task | `^frk:t1 !fnd @fs {p:"src/**"}` |
-| `^jn` | Join/await tasks | `^jn [t1,t2] ->$results` |
-| `^lk:name` | Acquire mutex | `^lk:db_write` |
-| `^ulk:name` | Release mutex | `^ulk:db_write` |
-| `^ch:name` | Declare channel | `^ch:data ::int buf:50` |
-| `^tx:name` | Send to channel | `^tx:data {v:$val}` |
-| `^rx:name` | Receive from channel | `^rx:data ->$val` |
-| `^tmo:N` | Timeout (seconds) | `^jn [t1] ^tmo:30 ->$r \| ^el >fl {err:timeout}` |
+| Token       | Meaning              | Usage                                            |
+| ----------- | -------------------- | ------------------------------------------------ |
+| `^frk:name` | Fork named task      | `^frk:t1 !fnd @fs {p:"src/**"}`                  |
+| `^jn`       | Join/await tasks     | `^jn [t1,t2] ->$results`                         |
+| `^lk:name`  | Acquire mutex        | `^lk:db_write`                                   |
+| `^ulk:name` | Release mutex        | `^ulk:db_write`                                  |
+| `^ch:name`  | Declare channel      | `^ch:data ::int buf:50`                          |
+| `^tx:name`  | Send to channel      | `^tx:data {v:$val}`                              |
+| `^rx:name`  | Receive from channel | `^rx:data ->$val`                                |
+| `^tmo:N`    | Timeout (seconds)    | `^jn [t1] ^tmo:30 ->$r \| ^el >fl {err:timeout}` |
 
 ```
 ^frk:scan !fnd @fs {p:"src/**" rgx:"TODO"}
@@ -338,6 +338,7 @@ Agents can define new tokens inline during a session:
 OpenLang compresses the three main inter-agent channels:
 
 **`sessions_spawn` (task delegation):**
+
 ```
 -- Instead of: "Search all recently changed TypeScript files excluding tests
 -- for TODO comments, read each one, and summarize what you find"
@@ -349,6 +350,7 @@ OpenLang compresses the three main inter-agent channels:
 ```
 
 **`sessions_send` (agent-to-agent messaging):**
+
 ```
 -- Agent A -> Agent B
 ~openlang
@@ -363,6 +365,7 @@ OpenLang compresses the three main inter-agent channels:
 ```
 
 **Announce results:**
+
 ```
 ~openlang
 >ok {n:12 todos:[
@@ -377,6 +380,7 @@ Agents use `~openlang` prefix so receivers know to parse compressed format. Norm
 ## Learning OpenLang
 
 Taught via a bootstrap skill at session start. Learnable because:
+
 - Sigils provide immediate intent classification
 - Short tokens compose freely for novel expressions
 - L1 fallback means you never get stuck

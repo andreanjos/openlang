@@ -1,6 +1,7 @@
-"""Model adapters for OpenLang benchmark."""
+"""Model adapters — Codex via CLI, Gemini via SDK."""
 
 import asyncio
+import tempfile
 import os
 from abc import ABC, abstractmethod
 
@@ -12,40 +13,47 @@ class ModelAdapter(ABC):
     async def complete(self, system: str, prompt: str) -> str: ...
 
 
-class ClaudeAdapter(ModelAdapter):
-    def __init__(self, model: str = "claude-sonnet-4-6"):
-        self.name = f"claude-{model}"
-        self.model = model
-        import anthropic
-        self.client = anthropic.AsyncAnthropic()
+async def _run_cli(cmd: list[str], timeout: int = 90) -> str:
+    """Run a CLI command and return stdout."""
+    proc = await asyncio.create_subprocess_exec(
+        *cmd,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    stdout, stderr = await asyncio.wait_for(
+        proc.communicate(), timeout=timeout,
+    )
+    out = stdout.decode().strip()
+    if proc.returncode != 0 and not out:
+        err = stderr.decode().strip()
+        # Filter out Node deprecation warnings
+        err_lines = [l for l in err.split("\n") if "DeprecationWarning" not in l and "trace-deprecation" not in l]
+        raise RuntimeError("\n".join(err_lines)[:200])
+    return out
+
+
+def _write_temp(content: str) -> str:
+    """Write content to a temp file, return path."""
+    fd, path = tempfile.mkstemp(suffix=".txt", prefix="openlang_")
+    os.write(fd, content.encode())
+    os.close(fd)
+    return path
+
+
+class CodexAdapter(ModelAdapter):
+    def __init__(self):
+        self.name = "codex"
 
     async def complete(self, system: str, prompt: str) -> str:
-        response = await self.client.messages.create(
-            model=self.model,
-            max_tokens=1024,
-            system=system,
-            messages=[{"role": "user", "content": prompt}],
-        )
-        return response.content[0].text
-
-
-class OpenAIAdapter(ModelAdapter):
-    def __init__(self, model: str = "gpt-4.1-mini"):
-        self.name = model
-        self.model = model
-        import openai
-        self.client = openai.AsyncOpenAI()
-
-    async def complete(self, system: str, prompt: str) -> str:
-        response = await self.client.chat.completions.create(
-            model=self.model,
-            max_tokens=1024,
-            messages=[
-                {"role": "system", "content": system},
-                {"role": "user", "content": prompt},
-            ],
-        )
-        return response.choices[0].message.content
+        full_prompt = f"{system}\n\n---\n\n{prompt}"
+        path = _write_temp(full_prompt)
+        try:
+            return await _run_cli(
+                ["codex", "exec", f"Read the file {path} and follow the instructions inside. Output your response to stdout only."],
+                timeout=90,
+            )
+        finally:
+            os.unlink(path)
 
 
 class GeminiAdapter(ModelAdapter):
@@ -70,11 +78,10 @@ class GeminiAdapter(ModelAdapter):
 
 
 def get_adapters(models: list[str] | None = None) -> list[ModelAdapter]:
-    """Return requested model adapters. Defaults to all available."""
+    """Return requested model adapters."""
     available = {
-        "claude": lambda: ClaudeAdapter(),
-        "gpt": lambda: OpenAIAdapter(),
-        "gemini": lambda: GeminiAdapter(),
+        "codex": CodexAdapter,
+        "gemini": GeminiAdapter,
     }
     if models is None:
         models = list(available.keys())

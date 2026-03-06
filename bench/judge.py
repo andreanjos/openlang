@@ -47,6 +47,25 @@ def check_balanced(text: str) -> list[str]:
     return errors
 
 
+def _strip_fences(text: str) -> str:
+    """Remove markdown code fences and backtick wrapping from model output."""
+    lines = text.strip().split("\n")
+    # Remove ```openlang / ``` fences
+    if lines and lines[0].startswith("```"):
+        lines = lines[1:]
+    if lines and lines[-1].strip() == "```":
+        lines = lines[:-1]
+    result = "\n".join(lines).strip()
+    # Remove single backtick wrapping: `content` -> content
+    if result.startswith("`") and result.endswith("`") and result.count("`") == 2:
+        result = result[1:-1]
+    return result
+
+
+# L3 sigil mapping (single uppercase letter)
+L3_SIGILS = {"Q", "C", "R", "S", "D", "M"}
+
+
 def check_sigil_start(text: str) -> list[str]:
     """Check that statements start with valid sigils."""
     errors = []
@@ -60,6 +79,9 @@ def check_sigil_start(text: str) -> list[str]:
             continue
         # Skip L1 text content
         if "~L1:" in text and not any(line.startswith(s) for s in VALID_SIGILS):
+            continue
+        # L3 bytecode lines start with uppercase letter + period
+        if len(line) > 1 and line[0] in L3_SIGILS and line[1] == ".":
             continue
         first_char = line[0]
         if first_char not in VALID_SIGILS and first_char not in {"<", "-", '"', "'"}:
@@ -115,10 +137,19 @@ async def llm_judge(adapter, test: dict, response: str) -> dict:
 
     try:
         result = await adapter.complete(JUDGE_PROMPT, prompt)
-        # Extract JSON from response
-        match = re.search(r'\{[^}]+\}', result)
+        # Try to extract JSON from response
+        # First try: find {"score": N ...} pattern
+        match = re.search(r'\{\s*"score"\s*:\s*(\d)\s*[,}]', result)
         if match:
-            return json.loads(match.group())
+            score = int(match.group(1))
+            # Try to get reason too
+            reason_match = re.search(r'"reason"\s*:\s*"([^"]*)"', result)
+            reason = reason_match.group(1) if reason_match else "no reason"
+            return {"score": score, "reason": reason}
+        # Second try: look for just a number 0, 1, or 2
+        match = re.search(r'\b([012])\b', result[:50])
+        if match:
+            return {"score": int(match.group(1)), "reason": result[:100]}
         return {"score": 0, "reason": "judge returned invalid format"}
     except Exception as e:
         return {"score": 0, "reason": f"judge error: {str(e)}"}
@@ -132,9 +163,13 @@ async def score_test(judge_adapter, test: dict, response: str) -> dict:
         "response": response,
     }
 
-    # For generation and roundtrip, run structural checks first
+    # Strip markdown fences from generation/roundtrip responses
+    cleaned = response
     if test["type"] in ("generation", "roundtrip"):
-        struct = structural_score(response)
+        cleaned = _strip_fences(response)
+        result["cleaned"] = cleaned
+
+        struct = structural_score(cleaned)
         result["structural"] = struct
         if not struct["valid"]:
             result["score"] = 0
@@ -142,7 +177,7 @@ async def score_test(judge_adapter, test: dict, response: str) -> dict:
             return result
 
     # LLM judge for semantic correctness
-    judgment = await llm_judge(judge_adapter, test, response)
+    judgment = await llm_judge(judge_adapter, test, cleaned if test["type"] != "comprehension" else response)
     result["score"] = judgment.get("score", 0)
     result["reason"] = judgment.get("reason", "no reason given")
     return result

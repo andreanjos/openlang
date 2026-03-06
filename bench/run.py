@@ -42,9 +42,17 @@ def make_prompt(test: dict) -> str:
             f"{test['prompt']}"
         )
     elif test["type"] == "generation":
-        return test["prompt"]
+        return (
+            "Output ONLY the OpenLang code. Do not explain, do not execute, "
+            "do not wrap in markdown.\n\n"
+            f"{test['prompt']}"
+        )
     else:  # roundtrip
-        return test["prompt"]
+        return (
+            "Output ONLY the OpenLang code. Do not explain, do not execute, "
+            "do not wrap in markdown.\n\n"
+            f"{test['prompt']}"
+        )
 
 
 async def run_test(
@@ -55,14 +63,14 @@ async def run_test(
         prompt = make_prompt(test)
         try:
             response = await asyncio.wait_for(
-                adapter.complete(skill, prompt), timeout=90
+                adapter.complete(skill, prompt), timeout=120
             )
         except asyncio.TimeoutError:
             return {
                 "test_id": test["id"],
                 "type": test["type"],
                 "score": 0,
-                "reason": "timeout (90s)",
+                "reason": "timeout (120s)",
                 "response": "",
             }
         except Exception as e:

@@ -13,7 +13,7 @@ class ModelAdapter(ABC):
     async def complete(self, system: str, prompt: str) -> str: ...
 
 
-async def _run_cli(cmd: list[str], timeout: int = 90) -> str:
+async def _run_cli(cmd: list[str], timeout: int = 120) -> str:
     """Run a CLI command and return stdout."""
     proc = await asyncio.create_subprocess_exec(
         *cmd,

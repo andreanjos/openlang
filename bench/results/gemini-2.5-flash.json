@@ -1,281 +1,281 @@
 {
   "model": "gemini-2.5-flash",
-  "timestamp": "2026-03-05T22:12:22.496878",
+  "timestamp": "2026-03-05T22:23:26.673939",
   "summary": {
     "comprehension": {
       "total": 35,
-      "correct": 34,
-      "partial": 1,
+      "correct": 33,
+      "partial": 2,
       "failed": 0,
-      "pct": 97.1
+      "pct": 94.3
     },
     "generation": {
       "total": 35,
-      "correct": 33,
-      "partial": 1,
+      "correct": 30,
+      "partial": 4,
       "failed": 1,
-      "pct": 94.3
+      "pct": 85.7
     },
     "roundtrip": {
       "total": 30,
-      "correct": 27,
-      "partial": 3,
+      "correct": 26,
+      "partial": 4,
       "failed": 0,
-      "pct": 90.0
+      "pct": 86.7
     }
   },
-  "overall_pct": 96.5,
+  "overall_pct": 94.0,
   "results": [
     {
       "test_id": "c01",
       "type": "comprehension",
-      "response": "**Plain English Translation:**\n\n\"Query the filesystem to **find** files. The path criteria specifies all files recursively within the `src/` directory that end with `.ts` (TypeScript files). Additionally, these files must contain the regular expression pattern `TODO`. The results of this search should be **limited** to a maximum of `20` items, and this list of found files will be assigned to a variable named `$lst`.\"",
+      "response": "This OpenLang message translates to:\n\n\"**Query** the **filesystem** to **find** entities (files) that match the **path pattern** `src/**/*.ts` (meaning all TypeScript files recursively within the `src/` directory and its subdirectories), and whose **content** matches the **regular expression** `TODO`. **Limit** the number of results to **20**. Store this list of found entities in a variable named `$lst`.\"",
       "score": 2,
-      "reason": "The response accurately and completely translates the OpenLang command into plain English, covering all parameters like find, filesystem context, path pattern, regex content, limit, and variable assignment. It fully matches the intent of the 'expected' description."
+      "reason": "The response accurately and comprehensively translates the OpenLang message, covering all details specified in the input and matching the expected meaning."
     },
     {
       "test_id": "c02",
       "type": "comprehension",
-      "response": "This OpenLang message translates to:\n\n\"**Command:** Delete from the **filesystem** the item at **path** `tmp/`. Apply the **force** modifier (meaning, proceed even if there are permissions issues or non-empty directories), and apply the **recursive** modifier (meaning, delete all contents within `tmp/` as well as `tmp/` itself).\"",
+      "response": "This OpenLang message translates to:\n\n\"**Command**: Delete **on the filesystem** the item at **path** `\"tmp/\"`, **forcing** the operation, and performing it **recursively**.\"",
       "score": 2,
-      "reason": "The response fully and accurately explains the OpenLang command, covering all elements: delete, filesystem target, path, force modifier, and recursive modifier. It demonstrates complete comprehension, even exceeding the brevity of the 'expected' description with a more detailed explanation."
+      "reason": "The response accurately translates all components of the OpenLang message, including the command, target (filesystem), path, force flag, and recursive flag. It fully comprehends the input."
     },
     {
       "test_id": "c03",
       "type": "comprehension",
-      "response": "This OpenLang message describes the current **context** or **state**.\n\nSpecifically, it communicates the following:\n*   **Project Name:** `myapp`\n*   **Language:** `TypeScript` (`ts`)\n*   **Environment:** `Node.js` (`node`)\n*   **Dependencies:** `react`, `next`, and `prisma`",
+      "response": "This OpenLang message communicates the following **state or data**:\n\nIt is describing the **context (`ctx`)** which includes:\n*   `proj:myapp`: The project name is \"myapp\".\n*   `lang:ts`: The primary language is TypeScript.\n*   `env:node`: The execution environment is Node.js.\n*   `deps:[react,next,prisma]`: The project dependencies are a list containing \"react\", \"next\", and \"prisma\".",
       "score": 2,
-      "reason": "The response accurately and completely describes all elements of the OpenLang context message, matching the intent of the expected output."
+      "reason": "The response accurately and completely describes the OpenLang message, correctly identifying all components and their values as per the expected output."
     },
     {
       "test_id": "c04",
       "type": "comprehension",
-      "response": "This OpenLang message translates to:\n\n\"**IF** the size (`sz`) property of the variable `$file` is greater than 1000, **THEN** modify (`!mod`) the file on the filesystem (`@fs`) specified by the path (`p`) in `$file` by truncating (`trunc:true`) it. **ELSE** (if the size is not greater than 1000), format (`!fmt`) the file on the filesystem (`@fs`) specified by the path (`p`) in `$file`.\"",
+      "response": "This OpenLang message expresses a conditional operation on a file:\n\n\"**If** the size (`sz`) of the variable `$file` is greater than 1000, **then** execute a command to **modify** the file on the **filesystem** (`@fs`) at the **path** (`p`) specified by `$file`, with the specific action to **truncate** the file (set to `true`). **Otherwise** (`^el`), execute a command to **format** the file on the **filesystem** (`@fs`) at the **path** (`p`) specified by `$file`.\"",
       "score": 2,
-      "reason": "The response accurately and completely translates the OpenLang message, providing a detailed explanation that fully matches the expected meaning."
+      "reason": "The model fully and accurately explains the OpenLang message, breaking down each component and translating it correctly into English. It captures all the details from the original message, which is suitable for a comprehension test."
     },
     {
       "test_id": "c05",
       "type": "comprehension",
-      "response": "This message is an **error notification**.\n\nIt indicates:\n*   The error relates to a message with the ID `a3x`.\n*   The specific error code is `E_FS_NOT_FOUND`, meaning a \"File System Not Found\" error.\n*   The severity level of this error is `fatal`.\n*   The descriptive message is \"missing config\".",
+      "response": "This OpenLang message translates to:\n\n\"This is an **error message** (`~err`) with the ID `a3x`. The error code is `E_FS_NOT_FOUND`, indicating a **filesystem error** where a requested resource or file could **not be found**. The severity level of this error is **fatal**, meaning it is critical and has likely halted the operation. The specific human-readable message provided is `missing config`.\"",
       "score": 2,
-      "reason": "The response fully comprehends the OpenLang error message, accurately extracting and explaining all components (ID, error code, level, and message). While the format differs from the concise summary in 'expected', all information is correctly identified and interpreted, demonstrating full comprehension."
+      "reason": "The model fully comprehended the OpenLang message, accurately identifying and explaining every component (`~err`, `id`, `code`, `lvl`, `msg`) and its meaning, including the implications of the fatal level and the specific error code. While more verbose than the `expected` summary, it demonstrates complete and correct understanding of the input."
     },
     {
       "test_id": "c06",
       "type": "comprehension",
-      "response": "This OpenLang message translates to:\n\n\"**Query** the **filesystem** to **find** files that are both **changed** and **recent**. The search should include all files matching the path `src/**/*.ts` (all TypeScript files recursively within the `src` directory) **but exclude** any files matching the path `*.test.ts` (test files). The resulting list of found paths should be assigned to the variable `$lst`.\"",
+      "response": "**Query:** Find files on the filesystem.\n\n**Qualifiers:**\n*   Files must be `chg` (changed).\n*   Files must be `rcn` (recent).\n\n**Parameters:**\n*   **Path (`p`):** Include files matching the glob pattern `\"src/**/*.ts\"`.\n*   **Path (`p`):** Exclude files matching the glob pattern `!~\"*.test.ts\"` (i.e., files whose names end with `.test.ts`).\n\n**Output:**\n*   Pipe the resulting list of file paths to a variable named `$lst`.\n\n---\n\n**Plain English Translation:**\n\n\"Query the filesystem to find files that have been changed recently. The search should include all files within the `src` directory and its subdirectories that end with `.ts` (TypeScript files), but specifically exclude any files that end with `.test.ts`. Store the resulting list of matching file paths in a variable named `$lst`.\"",
       "score": 2,
-      "reason": "The response accurately and comprehensively translates the OpenLang message. It correctly identifies all components: finding changed and recent files, the include/exclude path patterns, and the assignment to $lst. While more verbose than the expected, it contains all the information from the expected description and additional correct details."
+      "reason": "The response provides a comprehensive and accurate breakdown of the OpenLang command, including a clear plain English translation that fully encompasses and elaborates on the expected description. All elements of the command are correctly interpreted."
     },
     {
       "test_id": "c07",
       "type": "comprehension",
-      "response": "Okay, here is the precise English translation of the OpenLang message:\n\n1.  **`^frk:scan !fnd @fs {p:\"src/**\" rgx:\"TODO\"}`**\n    *   **Fork a task** named `scan`.\n    *   Within this `scan` task, **command** to **find** (`fnd`) items.\n    *   The scope for this find operation is the **filesystem** (`@fs`).\n    *   The parameters for the find operation are:\n        *   `p:\"src/**\"`: Search within paths matching the glob pattern `\"src/**\"` (meaning all files and directories recursively within the `src/` directory).\n        *   `rgx:\"TODO\"`: Filter the results to only include items (files) that contain the regular expression `\"TODO\"`.\n\n2.  **`^frk:test !tst @sh {cmd:\"vitest\"}`**\n    *   **Fork another task** named `test`.\n    *   Within this `test` task, **command** to **test** (`tst`).\n    *   The scope for this test operation is the **shell** (`@sh`).\n    *   The parameters for the test operation are:\n        *   `cmd:\"vitest\"`: Execute the shell command `\"vitest\"`.\n\n3.  **`^jn [scan,test] ^tmo:60 ->$results`**\n    *   **Join/await** the completion of the previously forked tasks specified in the list: `scan` and `test`.\n    *   Apply a **timeout** of `60` seconds to this join operation.\n    *   **Pipe** (`->`) the collective results of these joined tasks (i.e., the output or status of both `scan` and `test`) into a **variable** named `$results`.\n\n**In summary:** Start two concurrent operations: one to find all \"TODO\"s in source files, and another to run `vitest`. Then, wait for both of these operations to finish, with a maximum wait time of 60 seconds, and collect their outcomes into a variable.",
+      "response": "Here's the OpenLang message translated into plain English:\n\n1.  **Fork a new asynchronous task named \"scan\".** Within this task, **find** (`!fnd`) files on the **filesystem** (`@fs`) whose **path** (`p`) matches `\"src/**\"` (meaning all files recursively within the `src` directory) and whose content matches the **regular expression** (`rgx`) `\"TODO\"`.\n2.  **Fork another asynchronous task named \"test\".** Within this task, **run a test** (`!tst`) in the **shell** (`@sh`) by executing the **command** (`cmd`) `\"vitest\"`.\n3.  **Wait for both the \"scan\" and \"test\" tasks to complete** (`^jn [scan,test]`). **Apply a timeout of 60 seconds** (`^tmo:60`) to this waiting operation. Store the collective **results** (`->$results`) from these completed (or timed-out) tasks into a variable named `$results`.",
       "score": 2,
-      "reason": "The response provides a very detailed and accurate breakdown of each OpenLang command, and its summary perfectly matches the expected output, correctly identifying the parallel forking, the tasks performed, and the joining with a timeout."
+      "reason": "The response accurately and comprehensively explains the OpenLang input, covering all points mentioned in the expected output (forking two tasks, their actions, joining them with a timeout) and adding further correct details."
     },
     {
       "test_id": "c08",
       "type": "comprehension",
-      "response": "This OpenLang message translates to:\n\n1.  **Acquire a mutex lock** named `db_write`.\n2.  **Execute a command to write** to the **database** scope. The write operation targets the **table** named `users`, inserting or updating a **row** with the data `id: 1` and `name: \"x\"`.\n3.  **Release the mutex lock** named `db_write`.",
+      "response": "This OpenLang message performs a database write operation under a mutex lock.\n\nIn precise English:\n\n1.  **Acquire a mutex lock** named `db_write`. This ensures that only one operation can proceed with this specific lock at a time, preventing race conditions or conflicts for the `db_write` resource.\n2.  **Execute a command to write** to the `@db` (database) scope.\n    *   The write operation targets the table (`tbl`) named `users`.\n    *   The data to be written is a row (`row`) represented as a map containing an `id` with an integer value of `1` and a `name` with a string value of `\"x\"`.\n3.  **Release the mutex lock** named `db_write`, making it available for other operations.",
       "score": 2,
-      "reason": "The response accurately and comprehensively translates the OpenLang message, correctly identifying the lock acquisition, the detailed write operation including table and row data, and the lock release. It provides more detail than the expected output but remains entirely correct and faithful to the input."
+      "reason": "The response accurately and comprehensively explains the OpenLang message, covering all points mentioned in the expected output and providing additional correct detail."
     },
     {
       "test_id": "c09",
       "type": "comprehension",
-      "response": "This OpenLang exchange represents a **streamed result** for an operation identified by `id:k2`, delivered in three sequential parts.\n\nHere's the detailed translation:\n\n1.  **`>prt {id:k2 seq:1/3 eof:false lst:[\"a.ts\",\"b.ts\"]}`**\n    *   `>`: This is a **Result** message.\n    *   `prt`: The status of this result is **partial**.\n    *   `id:k2`: This message belongs to the result stream identified by `k2`.\n    *   `seq:1/3`: This is the **first part out of three total parts** in the sequence.\n    *   `eof:false`: This indicates that the **end of the stream has not yet been reached**.\n    *   `lst:[\"a.ts\",\"b.ts\"]`: The content of this partial result is a **list** containing the strings \"a.ts\" and \"b.ts\".\n\n2.  **`>prt {id:k2 seq:2/3 eof:false lst:[\"c.ts\"]}`**\n    *   `>`: This is a **Result** message.\n    *   `prt`: The status of this result is **partial**.\n    *   `id:k2`: This message belongs to the result stream identified by `k2`.\n    *   `seq:2/3`: This is the **second part out of three total parts** in the sequence.\n    *   `eof:false`: This indicates that the **end of the stream has not yet been reached**.\n    *   `lst:[\"c.ts\"]`: The content of this partial result is a **list** containing the string \"c.ts\".\n\n3.  **`>ok {id:k2 seq:3/3 eof:true lst:[\"d.ts\"]}`**\n    *   `>`: This is a **Result** message.\n    *   `ok`: The status of this final result is **success**.\n    *   `id:k2`: This message belongs to the result stream identified by `k2`.\n    *   `seq:3/3`: This is the **third and final part out of three total parts** in the sequence.\n    *   `eof:true`: This indicates that the **end of the stream has been reached**.\n    *   `lst:[\"d.ts\"]`: The content of this final result is a **list** containing the string \"d.ts\".\n\nIn summary, these messages collectively represent a successful streaming operation (identified by `k2`) that delivered a total of four items (`\"a.ts\"`, `\"b.ts\"`, `\"c.ts\"`, `\"d.ts\"`) over three distinct messages.",
+      "response": "This OpenLang message represents a streaming response identified by `k2`, delivered in three sequential parts.\n\nHere's the detailed translation:\n\n1.  **First message:** `>prt {id:k2 seq:1/3 eof:false lst:[\"a.ts\",\"b.ts\"]}`\n    *   This is a **partial result** (`>prt`).\n    *   It belongs to the message with ID `k2`.\n    *   It is the **first part out of three** in the sequence (`seq:1/3`).\n    *   It indicates that the **end of the data stream has not yet been reached** (`eof:false`).\n    *   The content of this partial result is a **list** (`lst`) containing the string values `\"a.ts\"` and `\"b.ts\"`.\n\n2.  **Second message:** `>prt {id:k2 seq:2/3 eof:false lst:[\"c.ts\"]}`\n    *   This is also a **partial result** (`>prt`).\n    *   It belongs to the message with ID `k2`.\n    *   It is the **second part out of three** in the sequence (`seq:2/3`).\n    *   It indicates that the **end of the data stream has not yet been reached** (`eof:false`).\n    *   The content of this partial result is a **list** (`lst`) containing the string value `\"c.ts\"`.\n\n3.  **Third message:** `>ok {id:k2 seq:3/3 eof:true lst:[\"d.ts\"]}`\n    *   This is a **successful final result** (`>ok`).\n    *   It belongs to the message with ID `k2`.\n    *   It is the **third and final part out of three** in the sequence (`seq:3/3`).\n    *   It indicates that the **end of the data stream has been reached** (`eof:true`).\n    *   The content of this final result is a **list** (`lst`) containing the string value `\"d.ts\"`.\n\n**In summary:** An operation (identified by `k2`) successfully streamed a list of items. The first part contained \"a.ts\" and \"b.ts\", the second part contained \"c.ts\", and the final part contained \"d.ts\", completing the stream.",
       "score": 2,
-      "reason": "The model correctly and thoroughly explains the streaming behavior, detailing each message and summarizing the overall process accurately. It correctly identifies the parts, content, sequence, and end-of-file indicators."
+      "reason": "The response accurately and comprehensively explains the streaming/chunked nature of the OpenLang messages, correctly identifying each part, its content, and the final completion, fully matching the expected description."
     },
     {
       "test_id": "c10",
       "type": "comprehension",
-      "response": "This is an OpenLang L3 (Bytecode) exchange:\n\n1.  `Q.fs.fnd.`app.config.ts`.rec`\n    *   **Sigil:** `Q` indicates a Query.\n    *   **Scope:** `fs` refers to the filesystem.\n    *   **Action:** `fnd` is \"find\".\n    *   **Parameter:** `` `app.config.ts` `` specifies the target file path/pattern.\n    *   **Modifier:** `rec` means \"recursive\".\n    *   **English Translation:** \"Query the filesystem to find the file named 'app.config.ts' recursively.\"\n\n2.  `R.ok.1.[`app.config.ts`:12]`\n    *   **Sigil:** `R` indicates a Result.\n    *   **Status:** `ok` means the operation was successful.\n    *   **Count:** `1` indicates one item was found.\n    *   **Result Data:** `` `app.config.ts`:12 `` indicates that the file 'app.config.ts' was found, and it has an associated value of `12` (the specific meaning of `12` is contextual but often represents a size in bytes/KB or a line count in this L3 format).\n    *   **English Translation:** \"Result: The operation was successful. 1 item was found: 'app.config.ts' with an associated value of 12.\"",
-      "score": 2,
-      "reason": "The model provides an excellent, detailed breakdown and correct translation of the L3 bytecode. It correctly identifies all components and their meanings. While the 'expected' output states 'at line 12' very specifically, the model accurately identifies '12' as an 'associated value' and notes that it 'often represents a size in bytes/KB or a line count in this L3 format,' demonstrating full comprehension of its potential meaning, including the one specified in the expected output."
+      "response": "This OpenLang exchange translates to:\n\n1.  **Query (L3 Bytecode):**\n    *   **Action:** Query (`Q`) the filesystem (`fs`) to find (`fnd`) a file.\n    *   **Parameters:** The file to find is named `app.config.ts`. The search should be recursive (`rec`).\n    *   **English:** \"Query the filesystem to recursively find the file named `app.config.ts`.\"\n\n2.  **Result (L3 Bytecode):**\n    *   **Status:** The operation was successful (`ok`).\n    *   **Count:** 1 item was found.\n    *   **Details:** The item found is `app.config.ts`, with an associated value of `12` (likely representing its size in bytes, or some other metric).\n    *   **English:** \"Result: The query was successful, finding 1 item: `app.config.ts` (with a value/size of 12).\"",
+      "score": 1,
+      "reason": "The response correctly translates the query and result structure. However, it misinterprets `:12` as 'likely representing its size in bytes, or some other metric' instead of the more precise 'line 12' as indicated in the expected output, which is a common convention for file search results."
     },
     {
       "test_id": "c11",
       "type": "comprehension",
-      "response": "This OpenLang message translates to:\n\n\"**Query** the **filesystem** to **read** the file at **path** `pkg.json`, and store its content into a variable named `$pkg`. Then, **command** the **shell** to **run** the **command** that is specified by the `scripts.test` property within the `$pkg` variable.\"",
+      "response": "This OpenLang message translates to:\n\n\"**Query** the **filesystem** to **read** the file located at the **path** `pkg.json`, and **bind** its entire content to a **variable** named `$pkg`. Subsequently, **command** the **shell** to **execute** a command, where the command string is the value found under the `scripts.test` **property** of the previously bound `$pkg` **variable**.\"",
       "score": 2,
-      "reason": "The response accurately and completely explains the OpenLang message, breaking down both operations correctly. It is more detailed than the expected but fully correct in its interpretation."
+      "reason": "The response provides a very detailed and accurate translation of the OpenLang message, fully capturing all aspects described in the expected output and elaborating on them correctly. It is a complete and correct comprehension."
     },
     {
       "test_id": "c12",
       "type": "comprehension",
-      "response": "This OpenLang message translates to:\n\n\"**Command**: Perform a **Git merge** operation. The **source** branch for this merge is `feature`, and the **destination** branch is `main`.\"",
+      "response": "This OpenLang message translates to:\n\n\"**Command**: Perform a **merge** operation within the **Git** scope. The **source** branch for the merge is named 'feature', and the **destination** branch is named 'main'.\"",
       "score": 2,
-      "reason": "The response fully comprehends the OpenLang input, correctly identifying the Git merge command, source, and destination branches. It's more verbose than the expected output, but accurately reflects all the information."
+      "reason": "The response accurately and fully explains the OpenLang message, correctly identifying the Git scope, the merge command, and the source and destination branches. While more verbose than the 'expected' output, it captures all the necessary details correctly."
     },
     {
       "test_id": "c13",
       "type": "comprehension",
-      "response": "This OpenLang message translates to:\n\n\"For each item in the list `$files`, assign the current item to the variable `$f`.\nWithin this loop:\n1.  **Read** (`?rd`) from the **filesystem** (`@fs`) the **file** located at the **path** (`p`) specified by `$f`. Store the **content** read from this file into a variable named `$content`.\n2.  **If** (`^if`) the **size** (`sz`) of `$content` is **not** (`neg`) equal to `0` (meaning, if the file is not empty):\n    a.  **Parse** (`!prs`) the **source** (`src`) `$content` in **memory** (`@mem`).\n    b.  **Format** (`!fmt`) the **file** located at the **path** (`p`) `$f` on the **filesystem** (`@fs`).\"",
+      "response": "This OpenLang message translates to the following plain English:\n\n\"For each item in the `$files` list, assign that item to the variable `$f` and then perform the following actions:\n\n1.  **Query** the **filesystem** to **read** the content of the file located at the path specified by `$f`. Store the result (the file's content) in the variable `$content`.\n2.  **If** the `size` property of `$content` is **not equal to 0** (meaning, if the file content is not empty):\n    *   **Command** to **parse** the `$content` in **memory**.\n    *   **Command** to **format** the file located at the path specified by `$f` on the **filesystem**.\"",
       "score": 2,
-      "reason": "The response fully and accurately translates the OpenLang message, providing a detailed breakdown that covers all aspects mentioned in the expected description and more, demonstrating complete comprehension."
+      "reason": "The response accurately and comprehensively translates the OpenLang message into plain English, correctly interpreting all commands, operators, and flow control structures, including the 'neg' condition."
     },
     {
       "test_id": "c14",
       "type": "comprehension",
-      "response": "This OpenLang message reports the current **state** (`#`) of the **system** (`sys`).\n\nSpecifically, it details:\n*   The **CPU** is **active** (`cpu:act`).\n*   **Memory** usage is **72%** (`mem:72%`).\n*   The **disk** is **healthy** (`disk:hlt`).\n*   The **network** is **idle** (`net:idl`).",
+      "response": "This OpenLang message communicates the **current state of the system**:\n\n*   **CPU:** Active\n*   **Memory:** 72% utilization\n*   **Disk:** Healthy\n*   **Network:** Idle",
       "score": 2,
-      "reason": "The response accurately and comprehensively decodes the OpenLang message, explaining each component correctly. It matches the expected interpretation."
+      "reason": "The model fully and accurately comprehends the OpenLang message, translating each component correctly into human-readable English. It matches the essence of the expected output perfectly."
     },
     {
       "test_id": "c15",
       "type": "comprehension",
-      "response": "This message is an **OpenLang handshake**.\n\n*   `~hello`: The agent is initiating a greeting or handshake.\n*   `id:bot1`: The message ID is \"bot1\". This uniquely identifies this specific message.\n*   `~cap`: The agent is declaring its capabilities.\n    *   `L:[1,2,3]`: It supports OpenLang compression levels 1, 2, and 3.\n    *   `ext:[fs,git,sh]`: It has capabilities to interact with the filesystem (`@fs`), git repositories (`@git`), and the shell (`@sh`).\n*   `ver:0.2`: The agent is using OpenLang protocol version 0.2.\n\nIn plain English: \"Hello. I am agent 'bot1', and I'm using OpenLang v0.2. I can communicate using all three OpenLang compression levels, and I can interact with the filesystem, Git, and the shell.\"",
-      "score": 2,
-      "reason": "The response correctly identifies and explains all components of the OpenLang message, providing a comprehensive and accurate interpretation that fully aligns with the expected output."
+      "response": "This OpenLang message is an agent (identified as \"bot1\") initiating a communication handshake. It is stating its capabilities:\n\n*   **`~hello`**: This is a greeting or introductory message.\n*   **`id:bot1`**: The identifier of the sending agent is \"bot1\".\n*   **`~cap {L:[1,2,3] ext:[fs,git,sh]}`**: This specifies the agent's capabilities:\n    *   **`L:[1,2,3]`**: It supports OpenLang communication levels 1 (Pidgin), 2 (Glyph), and 3 (Bytecode).\n    *   **`ext:[fs,git,sh]`**: It can interact with the filesystem (`@fs`), git repositories (`@git`), and the shell (`@sh`).\n*   **`ver:0.2`**: The agent is using OpenLang protocol version 0.2.\n\nIn summary: **Agent 'bot1' is saying hello, declaring its support for OpenLang levels 1, 2, and 3, and its ability to operate on the filesystem, git, and shell contexts, all while using OpenLang version 0.2.**",
+      "score": 1,
+      "reason": "The response correctly identifies most parts of the OpenLang message, including the agent ID, the handshake nature, extensions, and version. However, it interprets `L:[1,2,3]` as 'OpenLang communication levels 1 (Pidgin), 2 (Glyph), and 3 (Bytecode)' while the `expected` output specifies 'compression levels 1-3'. This difference in the interpretation of 'L' means it's partially correct, as a specific detail is mismatched with the expected meaning."
     },
     {
       "test_id": "c16",
       "type": "comprehension",
-      "response": "This OpenLang message translates to:\n\n\"**Query to find processes that are recent and have failed.**\"",
+      "response": "This OpenLang message translates to:\n\n\"**Query**: Find processes that are `failed` and `recent`.\"",
       "score": 2,
-      "reason": "The response accurately translates the OpenLang input into natural language. 'Processes that are recent and have failed' correctly conveys the meaning of 'recently failed processes', just with a slightly different phrasing. All components are understood and correctly linked."
+      "reason": "The response correctly translates all elements of the OpenLang input. 'Failed and recent' is semantically equivalent to 'recently failed', accurately capturing the intended meaning."
     },
     {
       "test_id": "c17",
       "type": "comprehension",
-      "response": "Here is the translation of the OpenLang message into plain English, detailing each component:\n\n1.  `^ch:data ::int buf:50`\n    *   **Action:** Declare a channel.\n    *   **Name:** `data`\n    *   **Type:** `int` (integer)\n    *   **Buffer Size:** `50` (meaning it can hold up to 50 integer values before blocking the sender).\n\n2.  `^frk:producer ^ea {$items} ->$i {^tx:data {v:$i}}`\n    *   **Action:** Fork a new, concurrently executing task.\n    *   **Name:** `producer`\n    *   **Task Body:**\n        *   **Action:** Iterate through a collection.\n        *   **Source:** The variable `$items` (representing a list or collection).\n        *   **Iteration Variable:** Each element from `$items` will be temporarily assigned to `$i`.\n        *   **Body for each item:**\n            *   **Action:** Transmit (send) a value to a channel.\n            *   **Channel:** The channel named `data`.\n            *   **Value to send:** The current item `$i`.\n\n3.  `^rx:data ->$val lmt:10`\n    *   **Action:** Receive a value from a channel.\n    *   **Channel:** The channel named `data`.\n    *   **Output:** The received value will be assigned to the variable `$val`.\n    *   **Modifier:** `lmt:10` (limit to 10). This means the operation will receive a maximum of 10 values from the `data` channel.\n\n**In summary:**\n\nFirst, a buffered channel named `data` is created, capable of holding 50 integer values. Then, a new concurrent task named `producer` is started. This `producer` task iterates through a collection of items (stored in a variable `$items`) and sends each item one by one to the `data` channel. Concurrently, the main flow attempts to receive up to 10 values from the `data` channel, assigning each received value to the variable `$val`.",
+      "response": "This OpenLang message translates to:\n\n1.  **Declare a channel:** A communication channel named `data` is established. It is designed to transmit integer (`::int`) values and has a buffer capacity (`buf`) of 50 elements.\n2.  **Fork a producer task:** A new, asynchronous task is started and named `producer`. This task will iterate (`^ea`) over a collection of items (referenced by the `$items` variable). For each item (`->$i`) in the collection, it will send (`^tx`) that item's value (`v:$i`) into the `data` channel.\n3.  **Receive limited data:** From the `data` channel, receive up to a limit (`lmt`) of 10 values. Each value received will be assigned to the `$val` variable.",
       "score": 2,
-      "reason": "The response accurately and comprehensively describes the OpenLang input, correctly identifying all actions and parameters. It provides more detail than the expected output but fully encapsulates all the required information."
+      "reason": "The response accurately and comprehensively describes each part of the OpenLang input. It correctly identifies the channel declaration, the forked producer task with its iteration and transmission logic, and the limited receive operation. While more verbose than the 'expected' example, it fully preserves the meaning and provides correct details for every command."
     },
     {
       "test_id": "c18",
       "type": "comprehension",
-      "response": "This OpenLang message is a **meta-command** (`~`) indicating an **unknown** (`unk`) token or concept.\n\nSpecifically, it is a **request for definition** (`req:def`) of the token identified as `\"xyz\"` (`tok:\"xyz\"`).\n\nIn plain English: \"I don't recognize the token 'xyz'. Please provide its definition.\"",
+      "response": "This OpenLang message translates to:\n\n\"I am signaling a meta-action. Specifically, I am requesting a definition (`req:def`) for an unknown token (`~unk`). The token in question is `\"xyz\"` (`tok:\"xyz\"`).\"\n\nIn simpler terms: \"Please define the token 'xyz'.\"",
       "score": 2,
-      "reason": "The response accurately and comprehensively explains the OpenLang input, fully capturing the meaning described in 'expected' and even providing additional helpful context."
+      "reason": "The model fully comprehended the OpenLang input. It correctly identified the unknown token, the token's value, and the request for its definition. The response is more verbose than the expected output but fully accurate and encapsulates the meaning."
     },
     {
       "test_id": "c19",
       "type": "comprehension",
-      "response": "This OpenLang message, sent from `agent1` to `agent2` at timestamp `1709641200` with a time-to-live of 5000 milliseconds, translates as follows:\n\n`agent1` is issuing a **command** (`!`) to `agent2` to **find** (`fnd`) items within the **filesystem** (`@fs`).\n\nThe parameters for this find operation are:\n*   `p:\"src/**\"`: Search for files recursively within the directory structure starting from `src/`.\n*   `rgx:\"TODO\"`: Filter these files by matching their content against the regular expression \"TODO\".\n*   `lmt:20`: Limit the total number of found results to a maximum of 20.\n\nThe results of this find operation (`->$lst`) should be stored in a **variable named `$lst`**.",
+      "response": "This OpenLang message can be translated as follows:\n\n**Message Envelope:**\n*   **ID:** `a3x` (This message's unique identifier is `a3x`).\n*   **From:** `agent1` (The sender of this message is `agent1`).\n*   **To:** `agent2` (The intended recipient of this message is `agent2`).\n*   **Timestamp (t):** `1709641200` (The message was sent at Unix timestamp 1709641200, which corresponds to Monday, March 4, 2024, 12:20:00 PM GMT).\n*   **Time-to-live (ttl_ms):** `5000` (The message is valid for 5000 milliseconds, or 5 seconds, from its timestamp).\n\n**Message Body:**\n*   **Level:** `~L2` (The communication is using OpenLang's Glyph (L2) compression level).\n*   **Command:** `!` (This is a command, requesting an action to be performed).\n*   **Action:** `fnd` (The requested action is \"find\").\n*   **Scope:** `@fs` (The action should be performed on the \"filesystem\").\n*   **Parameters for `fnd @fs`:**\n    *   `p:\"src/**\"` (The search path is \"src/**\", meaning recursively within the `src` directory).\n    *   `rgx:\"TODO\"` (The search should find items matching the regular expression \"TODO\").\n*   **Pipe:** `->` (The result of the \"find\" action should be piped).\n*   **Variable Binding:** `$lst` (The piped result should be bound to a variable named `$lst`).\n*   **Modifier:** `lmt:20` (The \"find\" operation should limit its results to a maximum of 20 items).\n\n**In plain English:**\n\n\"Agent1 is sending a command to Agent2. The command instructs Agent2 to **find files on the filesystem** within the `src/` directory (and its subdirectories) that contain the string 'TODO'. The first 20 results found should be collected and assigned to a variable named `$lst` for subsequent use. This message is valid for 5 seconds.\"",
       "score": 2,
-      "reason": "The response accurately comprehends all aspects of the OpenLang message, including the envelope and the detailed command. It provides a more verbose explanation than the 'expected' but is entirely correct and complete."
+      "reason": "The model correctly and thoroughly explains all parts of the OpenLang message, including the envelope details and the command body. The plain English summary accurately reflects the expected output, providing all the requested information and more, without any errors."
     },
     {
       "test_id": "c20",
       "type": "comprehension",
-      "response": "This OpenLang message translates to:\n\n\"**Command**: Modify the **filesystem** at the path `src/validate.ts`, specifically **inserting** the text `default: throw new Error()` at **line 42**.\"",
+      "response": "This OpenLang message translates to:\n\n\"**Command:** Modify the **filesystem** at the **path** `src/validate.ts` by **inserting** the string `default: throw new Error()` at **line number** `42`.\"",
       "score": 2,
-      "reason": "The response accurately and comprehensively translates the OpenLang command, identifying the command type, target, path, line number, and the exact text to be inserted, fully matching the expected comprehension."
+      "reason": "The response accurately translates all components of the OpenLang message, including the command, target, path, line number, and the exact string to be inserted. It fully demonstrates comprehension of the input."
     },
     {
       "test_id": "c21",
       "type": "comprehension",
-      "response": "This OpenLang message translates to the following precise English instructions:\n\n1.  **Query the network scope (`@net`) to `find` (`?fnd`) all services (`svc:\"*\"`).**\n2.  **Bind the resulting list of found services to a variable named `$lst`.**\n3.  **Then, iterate (`^ea`) over each item in the `$lst`, temporarily assigning each service to a variable named `$s` for the current iteration.**\n4.  **For each such service `$s`, query the network scope (`@net`) to `verify` (`?vfy`) that specific service (`svc:$s`).**\n5.  **Bind the verification status or result of each service to a variable named `$st`.**",
+      "response": "Find all services available on the network, store the list of services in a variable named `$lst`. Then, for each service in `$lst` (aliasing the current service as `$s`), query the network to verify the status of that specific service, storing its verification status in a variable named `$st`.",
       "score": 2,
-      "reason": "The response fully and accurately comprehends the OpenLang input. While more verbose than the expected concise summary, it correctly translates every component of the command without any errors or omissions of meaning. The meaning is fully preserved."
+      "reason": "The response accurately and comprehensively describes the OpenLang command, including details about variable assignments which were omitted in the expected answer but are correct. It fully captures the meaning and flow of the command."
     },
     {
       "test_id": "c22",
       "type": "comprehension",
-      "response": "This OpenLang message instructs the receiving agent to:\n\n1.  **Execute three separate shell commands in parallel.**\n    *   The first command is `vitest src/a.ts`.\n    *   The second command is `vitest src/b.ts`.\n    *   The third command is `vitest src/c.ts`.\n2.  **Collect the results** from all three of these parallel test executions.\n3.  **Store the aggregated results** into a variable named `$rpt`.",
+      "response": "Execute the following commands in parallel within the shell environment:\n1.  Run the command `\"vitest src/a.ts\"`.\n2.  Run the command `\"vitest src/b.ts\"`.\n3.  Run the command `\"vitest src/c.ts\"`.\n\nPipe the collective results of these parallel test executions into a variable named `$rpt`.",
       "score": 2,
-      "reason": "The response accurately and comprehensively describes the OpenLang message, correctly identifying parallel execution of three shell commands and the collection/storage of results. It aligns perfectly with the expected behavior."
+      "reason": "The response accurately describes the parallel execution of the three vitest commands and the collection of their results, fully matching the expected interpretation."
     },
     {
       "test_id": "c23",
       "type": "comprehension",
-      "response": "This OpenLang message instructs the receiving agent to perform two sequential operations on the filesystem:\n\n1.  **Copy** the file at the path `\"src/old.ts\"` to the destination path `\"src/new.ts\"`.\n2.  **Delete** the file at the path `\"src/old.ts\"`.\n\nIn essence, this sequence of commands renames `src/old.ts` to `src/new.ts` on the filesystem.",
+      "response": "This OpenLang message translates to the following actions:\n\n1.  **Command:** Copy a file within the **filesystem**.\n    *   **Source Path:** `src/old.ts`\n    *   **Destination Path:** `src/new.ts`\n2.  **Command:** Delete a file from the **filesystem**.\n    *   **Path to delete:** `src/old.ts`",
       "score": 2,
-      "reason": "The response correctly interprets both OpenLang commands and accurately explains their combined effect as a file rename, matching the expected comprehension."
+      "reason": "The response accurately breaks down and explains each OpenLang command, identifying the actions and their parameters correctly. It fully comprehends the input, even if it doesn't add the interpretative 'effectively a rename' comment present in the expected output."
     },
     {
       "test_id": "c24",
       "type": "comprehension",
-      "response": "The OpenLang message translates to:\n\n\"Define a new token `dpl` which means 'deploy to production'.\"",
+      "response": "This message defines a new token `dpl` within the OpenLang vocabulary.\n\n**Translation:**\nDefine the token \"dpl\" (deploy to production).",
       "score": 2,
-      "reason": "The response correctly interprets the OpenLang definition command and provides an accurate natural language explanation that matches the expected output."
+      "reason": "The model correctly comprehends and explains the OpenLang definition, identifying the token and its meaning."
     },
     {
       "test_id": "c25",
       "type": "comprehension",
-      "response": "This OpenLang message translates to:\n\n\"Loop 3 times. In each iteration:\n1.  Execute the shell command `curl health`.\n2.  Store the result of that command in a variable named `$r`.\n3.  If the `ok` property of the `$r` variable is true, then break out of the loop.\"",
+      "response": "Execute the following actions:\n\nLoop for a maximum of 3 iterations. In each iteration:\n1.  Execute the shell command `\"curl health\"`.\n2.  Store the result of this execution in a variable named `$r`.\n3.  Evaluate a condition: if the `ok` property of the `$r` variable is true (indicating a successful execution of the `curl health` command).\n4.  If the condition is true, immediately break out of the loop.",
       "score": 2,
-      "reason": "The response accurately and comprehensively translates the OpenLang message, providing all the details mentioned in the expected output and even elaborating slightly for better clarity. It fully preserves the meaning."
+      "reason": "The model's response accurately and comprehensively describes the functionality of the OpenLang input, including the loop iterations, the command execution, result storage, conditional check, and the break statement. It provides a more detailed explanation than the expected but remains fully correct."
     },
     {
       "test_id": "c26",
       "type": "comprehension",
-      "response": "First, **query** the **database** to **find** up to **100 recent entries** from the **'trades' table**, storing the results into a variable named `$trades`.\n\nThen, **command** the **memory scope** to **parse** the content of the `$trades` variable, specifically extracting or processing data related to the **'pnl' (profit and loss) key/field**, and store the resulting analysis in a variable named `$analysis`.",
+      "response": "Here's the translation of your OpenLang message into plain English, detailing each component:\n\n1.  **`?fnd @db {tbl:trades rcn lmt:100} ->$trades`**\n    *   **`?fnd`**: Perform a **query** to **find** data.\n    *   **`@db`**: The operation is targeting the **database** scope.\n    *   **`{tbl:trades rcn lmt:100}`**: The parameters for the find operation are:\n        *   `tbl:trades`: Search within the `trades` **table**.\n        *   `rcn`: Apply the `recent` **modifier**, meaning retrieve the most recent entries.\n        *   `lmt:100`: Apply a `limit` of `100` entries.\n    *   **`->$trades`**: Pipe the **result** of this query into a new variable named `$trades`.\n\n    *(In English: \"Query the database to find the 100 most recent entries from the 'trades' table, and assign these entries to a variable named `$trades`.\")*\n\n2.  **`!prs @mem {src:$trades k:pnl} ->$analysis`**\n    *   **`!prs`**: Execute a **command** to **parse** data.\n    *   **`@mem`**: The operation is taking place within **memory** (not persistent storage).\n    *   **`{src:$trades k:pnl}`**: The parameters for the parse operation are:\n        *   `src:$trades`: The **source** of the data to parse is the content of the previously defined `$trades` variable.\n        *   `k:pnl`: The parsing operation should specifically focus on or extract data related to the `pnl` (profit and loss) **key** or field.\n    *   **`->$analysis`**: Pipe the **result** of this parsing and analysis into a new variable named `$analysis`.\n\n    *(In English: \"Execute a command to parse the data currently stored in the `$trades` variable within memory, specifically focusing on or extracting the 'pnl' (profit and loss) key/field from each entry. Assign the result of this analysis to a variable named `$analysis`.\")*\n\n**Combined Plain English Translation:**\n\n\"Query the database to find and retrieve the 100 most recent entries from the 'trades' table, storing these entries in a variable named `$trades`. Subsequently, parse the content of the `$trades` variable in memory, with a specific focus on extracting or analyzing the 'pnl' (profit and loss) field, and store the outcome of this analysis in a variable named `$analysis`.\"",
       "score": 2,
-      "reason": "The response provides a very detailed and accurate explanation of both OpenLang commands, fully capturing all elements described in the expected output and adding beneficial clarity (e.g., 'pnl' as 'profit and loss')."
+      "reason": "The response accurately and comprehensively translates the OpenLang snippet into plain English, correctly identifying all operations, scopes, parameters, and variable assignments. It provides more detail than the 'expected' summary but is entirely correct and complete."
     },
     {
       "test_id": "c27",
       "type": "comprehension",
-      "response": "This OpenLang message translates to:\n\n**\"Success. The result contains the following metrics: Profit and Loss (PnL) is +2.3%, the win rate is 0.68, the Sharpe ratio is 1.42, and the total number of trades is 100.\"**",
+      "response": "This OpenLang message translates to:\n\n\"**Result: OK** (success) with the following details:\n*   **Profit and Loss (PnL):** +2.3%\n*   **Win Rate:** 0.68 (or 68%)\n*   **Sharpe Ratio:** 1.42\n*   **Total Trades:** 100\"",
       "score": 2,
-      "reason": "The model correctly translates all parts of the OpenLang message into natural language, identifying the success status, PnL, win rate, Sharpe ratio, and number of trades. The slight difference in expressing win rate (0.68 vs 68%) is a stylistic choice and doesn't detract from comprehension."
+      "reason": "The model correctly translates and interprets all components of the OpenLang message, matching the information in the expected output."
     },
     {
       "test_id": "c28",
       "type": "comprehension",
-      "response": "This OpenLang message is a **meta-command** to **retry** a previous operation.\n\nSpecifically:\n*   `~retry`: The command is to retry.\n*   `{id:a3x}`: The operation to be retried is identified by the message ID `a3x`.\n*   `~L1`: The instruction is to perform this retry, or the subsequent communication related to it, using OpenLang's Level 1 (Pidgin) compression protocol.",
+      "response": "This message is a request to **retry** an operation. The operation to be retried is identified by the message **ID `a3x`**. The `~L1` modifier indicates that this retry request, or the subsequent communication related to the retry, should be conducted at **Level 1 (Pidgin)**, which is a compressed English format used for concepts that the standard glyph-based grammar (L2) might struggle to express.",
       "score": 2,
-      "reason": "The response correctly identifies all components of the OpenLang message: the retry command, the message ID 'a3x', and the instruction to use Level 1 (Pidgin) compression for the retry, matching the expected interpretation."
+      "reason": "The response accurately and thoroughly explains all components of the OpenLang input, matching the expected interpretation and providing additional relevant context about L1 and L2 communication levels."
     },
     {
       "test_id": "c29",
       "type": "comprehension",
-      "response": "~L1:\nFirst, **query** to **find** (fnd) within the **packages scope** (@pkg) any package that has the **name** \"react\" and a **version** (ver) **greater than or equal to 18**. **Pipe** the result of this find operation into a **variable named `$pkg`**.\n\nThen, **execute a command** (!) to **verify** (vfy) within the **packages scope** (@pkg) the **dependencies** (dep) that correspond to the **peer dependencies** (`$pkg.peer`) of the package stored in the `$pkg` variable.",
+      "response": "This message performs two sequential actions related to packages:\n\n1.  **Query to find a package:** It searches for a package named \"react\" that has a version greater than or equal to 18. The result of this search (the found package's details) is stored in a variable named `$pkg`.\n2.  **Verify dependencies:** It then issues a command to verify the peer dependencies of the package that was found and stored in the `$pkg` variable.",
       "score": 2,
-      "reason": "The response accurately and comprehensively explains the OpenLang input, capturing all details mentioned in the expected output (finding a react package version 18+ and verifying its peer dependencies). While more verbose, it is fully correct and demonstrates complete comprehension."
+      "reason": "The response accurately and comprehensively explains the OpenLang command, breaking down each part correctly. It correctly identifies the package search, version criteria, variable assignment, and the subsequent verification of peer dependencies using the stored package."
     },
     {
       "test_id": "c30",
       "type": "comprehension",
-      "response": "This OpenLang message instructs the agent to perform an iteration with a conditional check:\n\n1.  **`^ea {$files} ->$f`**: Iterate over each item within the collection referenced by the variable `$files`. For each item, temporarily bind it to the variable `$f`.\n2.  **`^if {$f.ext:\"ts\"}`**: For each `$f`, check if its `ext` (extension) property is exactly \"ts\".\n3.  **`{!tst @sh {cmd:\"vitest $f\"}}`**:\n    *   If the condition is true (the file's extension is \"ts\"), execute a **command (`!`)** to **test (`tst`)** within the **shell (`@sh`)** scope.\n    *   The specific shell command to run is `vitest` followed by the value of the current file (`$f`).\n4.  **`^el {^ct}`**:\n    *   If the condition is false (the file's extension is not \"ts\"), then **continue (`^ct`)** to the next iteration of the `^ea` loop, effectively skipping any further actions for the current non-\"ts\" file.\n\nIn summary: **\"For each item in the `$files` collection, if its file extension is 'ts', then execute the `vitest` command in the shell using that file's path as an argument. Otherwise, skip to the next item.\"**",
+      "response": "For each item in the collection `$files`, assign that item to the variable `$f`.\nWithin this iteration:\n*   **If** the `ext` (extension) property of `$f` is equal to the string `\"ts\"`,\n    *   **Then**, execute a shell command to run `vitest` on the file specified by `$f`.\n*   **Else** (if the extension is not `\"ts\"`), continue to the next item in the `$files` collection, skipping the current item.",
       "score": 2,
-      "reason": "The response accurately and comprehensively explains the OpenLang message, matching the expected summary perfectly."
+      "reason": "The model's explanation is highly accurate and comprehensive, correctly breaking down each part of the OpenLang expression and matching the expected description perfectly."
     },
     {
       "test_id": "c31",
       "type": "comprehension",
-      "response": "The OpenLang message conveys the following:\n\n**Level 1 (Pidgin):**\nIt expresses the conceptual need for \"token weight decay\" across the \"conversation window,\" meaning that the importance or reliability of individual pieces of information (tokens) should diminish as they become older within the current conversational context. The rationale is that \"older context is less reliable.\" It then \"suggests an exponential falloff\" as the preferred decay mechanism for this weight.\n\n**Level 2 (Glyph):**\nThis part provides a concrete implementation for the suggested decay. It issues a **command (`!`)** to **make (`mk`)** a new item **in memory (`@mem`)**. This item is given the **key (`k`)** \"decay\" and its **value (`fn`)** is a **function** that takes an input called \"age\" and calculates its output as `1 divided by (1 plus age)`.\n\n**In essence:** The message first explains the problem (older context becomes less reliable), proposes a general solution (exponential falloff of token weights over time), and then immediately provides a specific mathematical function (`1/(1+age)`) to implement this decay behavior in the agent's memory.",
+      "response": "This message communicates two things: a conceptual explanation for a problem, and a proposed programmatic solution.\n\nHere's the precise translation:\n\n1.  **`~L1: token weight decay across conv window \u2014 older ctx less reliable, suggest exponential falloff`**\n    *   The sender is temporarily switching to **Level 1 (Pidgin)** communication to express a concept that might not have a direct, compact OpenLang sigil equivalent.\n    *   The concept is \"token weight decay\" (the gradual reduction in the influence or importance of individual tokens) within a \"conversational window\" (the active span of context in a dialogue).\n    *   The rationale provided is that \"older context is less reliable.\"\n    *   The suggestion is to implement this decay using an \"exponential falloff\" (a mathematical function where the value decreases rapidly at first and then slows down).\n\n2.  **`~L2: !mk @mem {k:decay fn:{age->1/(1+age)}}`**\n    *   The sender is switching back to **Level 2 (Glyph)** communication, the default.\n    *   This is a **command (`!`)** to **make (`mk`)** an entry **in memory (`@mem`)**.\n    *   The entry will have a **key (`k`)** named `\"decay\"`.\n    *   The value associated with this key is a **function (`fn`)** defined as `{age -> 1/(1+age)}`. This function takes an input variable named `age` and returns `1` divided by `(1 + age)`. This specific function describes an inverse linear decay, which serves as a concrete implementation for the \"decay\" concept mentioned in the L1 part, even though the L1 suggested \"exponential falloff\" specifically.",
       "score": 2,
-      "reason": "The response accurately and thoroughly explains both L1 and L2, covering all aspects mentioned in the expected description (concept explanation, implementation via memory entry, and the decay function itself). It is verbose but correct."
+      "reason": "The response accurately and thoroughly explains both parts of the OpenLang input, correctly identifying the conceptual explanation in L1 and its programmatic implementation in L2, including the specific details of the memory entry and decay function. It even notes the minor discrepancy between the suggested decay type and the implemented one, demonstrating excellent comprehension."
     },
     {
       "test_id": "c32",
       "type": "comprehension",
-      "response": "This OpenLang message instructs an AI agent to perform a network operation and handle its outcome:\n\n1.  **Command:** Execute a \"send\" action within the \"network\" scope.\n2.  **Network Operation:** Send a request to the URL `https://api.example.com` using the `POST` method. The request body should be an object containing a single field `msg` with the value `\"hello\"`.\n3.  **Result Handling:** Store the entire response from this network operation into a variable named `$resp`.\n4.  **Conditional Check:**\n    *   **If** the `status` field of the `$resp` variable is `200` (indicating success):\n        *   **Then** return a success result (`>ok`). This result should contain a `data` field whose value is the `body` field of the `$resp` variable (the response body).\n    *   **Else** (if the status is not `200`):\n        *   **Then** return an error message (`~err`). This error should have a code of `E_NET_FAIL` (Network Failure), a level of `warn` (warning), and its `msg` field should contain the `status` value from the `$resp` variable.",
+      "response": "This OpenLang message translates to the following plain English:\n\n\"Execute a command to **send** data over the **network**. The destination is the URL `https://api.example.com`, using the `POST` HTTP method. The body of the request will be a data structure containing a field named `msg` with the value `hello`. The entire response from this network operation should be stored in a variable named `$resp`.\n\nAfterward, evaluate a condition:\n*   **If** the `status` field of the `$resp` variable is `200` (indicating success), **then** issue a successful result containing a `data` field whose value is the `body` field from the `$resp` variable.\n*   **Else** (if the status is not 200), issue an **error** message. This error will have the code `E_NET_FAIL` (Network Failure), a severity level of `warn` (warning), and its message will be the specific `status` value received in the `$resp` variable.\"",
       "score": 2,
-      "reason": "The model's response provides a comprehensive and accurate breakdown of the OpenLang command, explaining each part in detail. It fully captures the meaning of the input, exceeding the brevity of the 'expected' description but without any errors or omissions in understanding."
+      "reason": "The response accurately and completely explains the OpenLang code, covering all points mentioned in the expected description and even providing more detail, which is acceptable for a comprehension task."
     },
     {
       "test_id": "c33",
       "type": "comprehension",
-      "response": "Okay, here is the translation of the OpenLang message into plain English:\n\n\"**Query** the **git** scope to **find** all **changed and recent branches**, **limit** the results to **5**, and store them in a variable named `$branches`.\"",
-      "score": 1,
-      "reason": "The response accurately translates most parts but misses the nuance that `rcn` combined with `lmt:5` implies 'most recently changed', not just 'changed and recent'. It also includes the variable assignment detail which was omitted in the concise expected output."
+      "response": "Query the `@git` scope to `find` all branches (`branch:\"*\"`). Filter these branches to include only those that are `changed` and `recent`. Store the resulting list, `limit`ed to 5 items, into a variable named `$branches`.",
+      "score": 2,
+      "reason": "The response accurately and comprehensively explains every component of the OpenLang query, matching the expected meaning. The slightly more verbose breakdown is still correct."
     },
     {
       "test_id": "c34",
       "type": "comprehension",
-      "response": "This OpenLang message translates to:\n\n\"Await the completion of the tasks identified as `t1` and `t2`. Apply a timeout of 30 seconds to this waiting operation. If the tasks complete successfully within the specified timeout, store their aggregated results in the variable `$r`. Otherwise (if the timeout is reached before the tasks complete), return a failed status with an error explicitly stating 'timeout'.\"",
+      "response": "This OpenLang message translates to:\n\n\"**Join** (await the completion of) the tasks named `t1` and `t2`. If these tasks do not complete within **30 seconds**, the join operation will **timeout**. The result of this operation (whether successful or timed out) should be stored in the variable `$r`.\n\n**Otherwise (if the join fails, specifically due to the timeout)**, immediately signal a **failure** with an error message indicating a `timeout`.\"",
       "score": 2,
-      "reason": "The response accurately and comprehensively translates the OpenLang message, covering all details including the join operation, timeout, success path (`->$r`), and failure path (`| ^el >fl {err:timeout}`). It is a more verbose but equally correct interpretation than the expected."
+      "reason": "The response accurately and comprehensively translates the OpenLang message, covering all components like task joining, timeout, result storage, and the error handling branch. It correctly identifies that the 'else' branch is triggered upon failure, including a timeout."
     },
     {
       "test_id": "c35",
       "type": "comprehension",
-      "response": "This message describes the **current state or data** of a **cache**.\n\nSpecifically:\nThe cache has a total of **450 entries**.\nAmong these, **38 entries are stale**.\n**12 entries are considered hot** (frequently accessed).\n**400 entries are considered cold** (infrequently accessed).",
+      "response": "This message conveys **state/data** regarding a cache.\n\nSpecifically, it reports the following:\n*   The cache currently contains **450 entries** in total.\n*   **38** of these entries are **stale**.\n*   **12** entries are considered **hot** (frequently accessed).\n*   **400** entries are considered **cold** (infrequently accessed).",
       "score": 2,
-      "reason": "The model correctly parsed and explained all components of the OpenLang cache status message, matching the expected interpretation precisely."
+      "reason": "The response accurately and completely comprehends the OpenLang input, correctly identifying all parameters and their values, and providing the correct interpretation for 'hot' and 'cold' as per the expected output."
     },
     {
       "test_id": "g01",
       "type": "generation",
-      "response": "`?fnd @fs rec {p:\"**/*.py\"}`",
-      "cleaned": "?fnd @fs rec {p:\"**/*.py\"}",
+      "response": "?fnd @fs {p:\"**/*.py\" rec:true}",
+      "cleaned": "?fnd @fs {p:\"**/*.py\" rec:true}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -285,13 +285,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly identifies the verb, scope, parameter, and modifier. The reordering of 'rec' and the parameter object is syntactically valid and preserves the meaning."
+      "reason": "The response correctly identifies the find operation, filesystem scope, and file pattern. The `rec:true` inside the parameter object is a valid alternative syntax for specifying recursion, aligning with 'or similar valid query' in the expected criteria."
     },
     {
       "test_id": "g02",
       "type": "generation",
-      "response": "`!del @fs {p:\"dist\" frc:true}`",
-      "cleaned": "!del @fs {p:\"dist\" frc:true}",
+      "response": "!del @fs {p:\"dist/\" frc:true}",
+      "cleaned": "!del @fs {p:\"dist/\" frc:true}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -300,14 +300,14 @@
           "sigil_start": true
         }
       },
-      "score": 2,
-      "reason": "The response correctly uses `!del` with `@fs` scope. `p:\"dist\"` correctly specifies the path. `frc:true` is a valid OpenLang L2 way to specify the 'force' modifier, equivalent to the standalone `frc` keyword."
+      "score": 0,
+      "reason": "The response contains a syntax error. Parameters within the object must be comma-separated: `{p:\\"
     },
     {
       "test_id": "g03",
       "type": "generation",
-      "response": "`?rd @fs {p:\"config.yaml\"} ->$content`",
-      "cleaned": "?rd @fs {p:\"config.yaml\"} ->$content",
+      "response": "?rd @fs {p:\"config.yaml\"} ->$config",
+      "cleaned": "?rd @fs {p:\"config.yaml\"} ->$config",
       "structural": {
         "valid": true,
         "errors": [],
@@ -317,12 +317,12 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly translates the instruction into OpenLang L2. Using '$content' is a valid variable name for 'a variable' as specified in the prompt."
+      "reason": "The response correctly translates the instruction into OpenLang L2, reading the specified file and storing it in a properly bound variable ($config is a valid variable name)."
     },
     {
       "test_id": "g04",
       "type": "generation",
-      "response": "`!run @sh {cmd:\"npm test\"}`",
+      "response": "!run @sh {cmd:\"npm test\"}",
       "cleaned": "!run @sh {cmd:\"npm test\"}",
       "structural": {
         "valid": true,
@@ -332,14 +332,14 @@
           "sigil_start": true
         }
       },
-      "score": 2,
-      "reason": "The response correctly generates the OpenLang L2 command. The 'with shell scope' in the expected field appears to be a natural language clarification rather than part of the OpenLang syntax itself, which is correctly represented by `@sh`."
+      "score": 1,
+      "reason": "The core OpenLang command `!run @sh {cmd:\\"
     },
     {
       "test_id": "g05",
       "type": "generation",
-      "response": "```openlang\n{id:msg1 from:agent_a to:agent_b\n !run @sh {cmd:\"npm run build\"} ->$build_res;\n ^if {$build_res.status:ok} {\n   !run @sh {cmd:\"npm run deploy\"}\n } ^el {\n   !snd @net {dest:\"notification_service\" subj:\"Build Failed\" body:$build_res.err}\n }\n}\n```",
-      "cleaned": "{id:msg1 from:agent_a to:agent_b\n !run @sh {cmd:\"npm run build\"} ->$build_res;\n ^if {$build_res.status:ok} {\n   !run @sh {cmd:\"npm run deploy\"}\n } ^el {\n   !snd @net {dest:\"notification_service\" subj:\"Build Failed\" body:$build_res.err}\n }\n}",
+      "response": "!run @sh {cmd:\"npm run build\"} ->$build_res;\n^if {$build_res.status:ok} {\n  !dpl @net {target:prod src:$build_res.output}\n} ^el {\n  !snd @net {target:\"alert_channel\" type:err msg:\"Build failed\" detail:$build_res.err}\n}",
+      "cleaned": "!run @sh {cmd:\"npm run build\"} ->$build_res;\n^if {$build_res.status:ok} {\n  !dpl @net {target:prod src:$build_res.output}\n} ^el {\n  !snd @net {target:\"alert_channel\" type:err msg:\"Build failed\" detail:$build_res.err}\n}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -349,13 +349,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly translates the input into OpenLang L2, using the specified `^if/^el` structure. It accurately runs a build, checks its status, deploys on success, and sends an error notification with relevant details on failure. Syntax is valid."
+      "reason": "The response correctly implements the requested 'if/else' logic using OpenLang L2 syntax, including a build step, a condition check, a deploy action for success, and a send notification action for failure. All actions are appropriate and syntactically valid."
     },
     {
       "test_id": "g06",
       "type": "generation",
-      "response": "`~err {id:x5 code:E_PARSE lvl:fatal msg:\"parse error for &x5\"}`",
-      "cleaned": "~err {id:x5 code:E_PARSE lvl:fatal msg:\"parse error for &x5\"}",
+      "response": "~err {id:x5 code:E_PARSE lvl:fatal msg:\"fatal parse error\"}",
+      "cleaned": "~err {id:x5 code:E_PARSE lvl:fatal msg:\"fatal parse error\"}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -365,13 +365,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly uses `~err`, `code:E_PARSE`, `lvl:fatal`, and provides `id:x5` as an 'id reference' as described in the expected output. The additional `msg` field is a reasonable and valid enrichment for an error report and does not detract from correctness."
+      "reason": "The response correctly identifies all required elements (error type, level, and ID) and formats them in valid OpenLang L2 syntax using an object literal. The `expected` was a description, and the model's response fully encapsulates that description, adding a relevant message field which is also acceptable."
     },
     {
       "test_id": "g07",
       "type": "generation",
-      "response": "```openlang\n^frk:lint_task !run @sh {cmd:\"npm run lint\"}\n^frk:test_task !run @sh {cmd:\"npm run test\"}\n^jn [lint_task,test_task] ^tmo:45 ->$results\n```",
-      "cleaned": "^frk:lint_task !run @sh {cmd:\"npm run lint\"}\n^frk:test_task !run @sh {cmd:\"npm run test\"}\n^jn [lint_task,test_task] ^tmo:45 ->$results",
+      "response": "^frk:lint !run @sh {cmd:\"eslint src/\"}\n^frk:test !run @sh {cmd:\"vitest\"}\n^jn [lint,test] ^tmo:45 ->$results",
+      "cleaned": "^frk:lint !run @sh {cmd:\"eslint src/\"}\n^frk:test !run @sh {cmd:\"vitest\"}\n^jn [lint,test] ^tmo:45 ->$results",
       "structural": {
         "valid": true,
         "errors": [],
@@ -381,13 +381,13 @@
         }
       },
       "score": 2,
-      "reason": "The model correctly generates two forked tasks with appropriate commands for linting and testing, and then joins them with the specified 45-second timeout, using valid OpenLang L2 syntax. This fully satisfies the prompt and aligns with the expected structure."
+      "reason": "The response correctly translates the input into valid OpenLang L2, including two forked tasks, a join operation, and a 45-second timeout. It perfectly matches the structure described in the expected output."
     },
     {
       "test_id": "g08",
       "type": "generation",
-      "response": "`?fnd @fs chg rcn lrg {p:\"**/*\" p:!~\"node_modules/**\"}`",
-      "cleaned": "?fnd @fs chg rcn lrg {p:\"**/*\" p:!~\"node_modules/**\"}",
+      "response": "?fnd @fs chg rcn lrg {p:!~\"node_modules/**\"}",
+      "cleaned": "?fnd @fs chg rcn lrg {p:!~\"node_modules/**\"}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -397,13 +397,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly translates the input into OpenLang L2, including finding files (`?fnd @fs`), applying qualifiers (`chg rcn lrg`), and implementing the exclusion for `node_modules` using `p:!~\"node_modules/**\"`. The `p:\"**/*\"` is valid, though slightly redundant, but doesn't detract from correctness. It fully matches the intent described by the expected output."
+      "reason": "The response correctly translates all parts of the input into valid OpenLang L2, including the 'find' command, 'file system' target, 'recently changed large' qualifiers, and the correct negation for 'node_modules' paths."
     },
     {
       "test_id": "g09",
       "type": "generation",
-      "response": "`#sys {cpu:idl mem.pct:45 disk:hlt net:act}`",
-      "cleaned": "#sys {cpu:idl mem.pct:45 disk:hlt net:act}",
+      "response": "#env {cpu:idl mem:45 disk:hlt net:act}",
+      "cleaned": "#env {cpu:idl mem:45 disk:hlt net:act}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -412,14 +412,14 @@
           "sigil_start": true
         }
       },
-      "score": 2,
-      "reason": "The response accurately translates the input into a valid OpenLang L2 structure using a `#sys` context tag and explicit key-value qualifiers for all specified states (CPU idle, memory at 45%, disk healthy, network active). While the 'expected' described 'qualifier tokens' (idl, hlt, act), the response uses these tokens within key-value pairs (cpu:idl, disk:hlt, net:act), which is a valid and often more explicit L2 representation. The memory state is also correctly included."
+      "score": 1,
+      "reason": "The response correctly identifies and includes all state details (CPU idle, memory 45%, disk healthy, network active) using appropriate OpenLang L2 syntax (key-value pairs). However, it uses '#env' instead of the expected '#sys' tag, which the prompt 'Declare system state' implies."
     },
     {
       "test_id": "g10",
       "type": "generation",
-      "response": "```openlang\n{id:analyzer from:analyzer to:ANY\n ~hello {id:analyzer ~cap {L:[1,2] ext:[fs,db]} ver:0.2}\n}\n```",
-      "cleaned": "{id:analyzer from:analyzer to:ANY\n ~hello {id:analyzer ~cap {L:[1,2] ext:[fs,db]} ver:0.2}\n}",
+      "response": "{id:analyzer from:analyzer to:ANY\n~hello {id:analyzer ~cap {L:[1,2] ext:[fs,db]} ver:0.2}\n}",
+      "cleaned": "{id:analyzer from:analyzer to:ANY\n~hello {id:analyzer ~cap {L:[1,2] ext:[fs,db]} ver:0.2}\n}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -429,13 +429,13 @@
         }
       },
       "score": 2,
-      "reason": "The model correctly generated a complete and syntactically valid OpenLang L2 message for an agent handshake, including the message envelope, agent ID, capabilities (levels and extensions), and a common version field, all based on the prompt. The `expected` was a natural language description of the `~hello` command's content, not a full OpenLang L2 message, so the model's more complete response is appropriate and correct."
+      "reason": "The model correctly interpreted the request to write an OpenLang L2 handshake message. It included all specified elements: agent ID 'analyzer', levels 1 and 2, and filesystem/database scopes. The response is a syntactically valid OpenLang L2 message. The `expected` value is a descriptive string rather than a literal OpenLang string, but the model's output correctly implements all described components within a proper L2 structure. The addition of `ver:0.2` is a common and acceptable practice for handshake messages and does not detract from correctness."
     },
     {
       "test_id": "g11",
       "type": "generation",
-      "response": "```openlang\n^lp {n:5} <<\n  !vfy @net {target:\"my-service.com/health\"} ->$health_status\n  ^if {$health_status.status == \"ok\"} {^br}\n>>\n```",
-      "cleaned": "^lp {n:5} <<\n  !vfy @net {target:\"my-service.com/health\"} ->$health_status\n  ^if {$health_status.status == \"ok\"} {^br}\n>>",
+      "response": "^lp {n:5} << ?vfy @svc {name:\"my_service\"} ->$res; ^if {$res.status:\"ok\"} {^br} >>",
+      "cleaned": "^lp {n:5} << ?vfy @svc {name:\"my_service\"} ->$res; ^if {$res.status:\"ok\"} {^br} >>",
       "structural": {
         "valid": true,
         "errors": [],
@@ -445,13 +445,13 @@
         }
       },
       "score": 2,
-      "reason": "The model correctly translates the natural language prompt into valid OpenLang L2. It accurately implements the loop for 5 times, the checking of service health (using `!vfy @net`), and the conditional break."
+      "reason": "The model correctly translates the natural language request into a valid OpenLang L2 syntax, implementing all specified conditions: looping 5 times, verifying a service's health, and breaking if it's healthy. The 'expected' field seems to be a high-level description rather than a literal OpenLang target, and the model's response is a concrete and correct implementation."
     },
     {
       "test_id": "g12",
       "type": "generation",
-      "response": "`?fnd @fs {p:\"**/*.ts\"} ->$files; ^ea {$files} ->$file {!tst @sh {cmd:\"vitest $file\"}}`",
-      "cleaned": "?fnd @fs {p:\"**/*.ts\"} ->$files; ^ea {$files} ->$file {!tst @sh {cmd:\"vitest $file\"}}",
+      "response": "?fnd @fs {p:\"**/*.ts\"} ->$files | ^ea {$files} ->$f {!tst @sh {cmd:\"vitest $f\"}}",
+      "cleaned": "?fnd @fs {p:\"**/*.ts\"} ->$files | ^ea {$files} ->$f {!tst @sh {cmd:\"vitest $f\"}}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -461,13 +461,13 @@
         }
       },
       "score": 2,
-      "reason": "The model's response is a syntactically correct and semantically accurate OpenLang L2 command that fully addresses the prompt. The provided `expected` value is not valid OpenLang L2 syntax (e.g., 'with', 'pipe into' are natural language, not OpenLang operators/keywords) and therefore cannot be used as a direct comparison target for OpenLang L2 generation. The model correctly generated valid OpenLang L2 as requested."
+      "reason": "The response correctly translates the natural language prompt into OpenLang L2. It uses `?fnd` with the correct pattern, pipes the results into a loop `^ea`, and executes a shell command `!tst @sh` with `vitest` for each file, correctly interpolating the file variable. The syntax is valid and follows OpenLang conventions."
     },
     {
       "test_id": "g13",
       "type": "generation",
-      "response": "```openlang\n^lk:file_write\n!wr @fs {p:\"logs/activity.log\" cnt:\"Op complete. Time:$t.now\" apnd:true}\n^ulk:file_write\n```",
-      "cleaned": "^lk:file_write\n!wr @fs {p:\"logs/activity.log\" cnt:\"Op complete. Time:$t.now\" apnd:true}\n^ulk:file_write",
+      "response": "^lk:file_write; !wr @fs {p:\"log.txt\" append:true content:\"Log entry\"}; ^ulk:file_write",
+      "cleaned": "^lk:file_write; !wr @fs {p:\"log.txt\" append:true content:\"Log entry\"}; ^ulk:file_write",
       "structural": {
         "valid": true,
         "errors": [],
@@ -477,7 +477,7 @@
         }
       },
       "score": 2,
-      "reason": "The model correctly translates the natural language request into valid OpenLang. It acquires the lock, performs a file system write (with appropriate logging parameters which is a good elaboration), and then releases the lock. The commands are correctly sequenced. The detailed parameters for the log write are a valid and useful addition beyond the simplified 'expected' response."
+      "reason": "The model correctly translates the natural language instruction into OpenLang L2. All core operations (`^lk:file_write`, `!wr @fs`, `^ulk:file_write`) are present and in the correct order. The syntax is valid. While the model added specific parameters to the `!wr @fs` command (e.g., `p:\"log.txt\"`, `append:true`, `content:\"Log entry\"`) and used `;` as a separator instead of `,` and omitted the `sequence` keyword, these are valid elaborations or stylistic choices in OpenLang L2 and do not detract from the correctness or understanding of the original prompt. The prompt only specified 'write to a log file', and the model provided a plausible and complete OpenLang command for doing so."
     },
     {
       "test_id": "g14",
@@ -493,13 +493,13 @@
         }
       },
       "score": 2,
-      "reason": "The response perfectly matches the expected OpenLang L2 token definition, including correct syntax and content."
+      "reason": "The response perfectly matches the expected OpenLang L2 syntax for defining a new token with its meaning."
     },
     {
       "test_id": "g15",
       "type": "generation",
-      "response": "```openlang\n{id:str1 from:ai1 to:ai2 t:1709641200\n >prt {id:resA seq:1/2 eof:false lst:[{n:item1},{n:item2},{n:item3}]}\n}\n{id:str2 from:ai1 to:ai2 t:1709641201\n >ok {id:resA seq:2/2 eof:true lst:[{n:item4},{n:item5}]}\n}\n```",
-      "cleaned": "{id:str1 from:ai1 to:ai2 t:1709641200\n >prt {id:resA seq:1/2 eof:false lst:[{n:item1},{n:item2},{n:item3}]}\n}\n{id:str2 from:ai1 to:ai2 t:1709641201\n >ok {id:resA seq:2/2 eof:true lst:[{n:item4},{n:item5}]}\n}",
+      "response": ">prt {id:res123 seq:1/2 eof:false lst:[\"item_A\",\"item_B\",\"item_C\"]}\n>ok {id:res123 seq:2/2 eof:true lst:[\"item_D\",\"item_E\"]}",
+      "cleaned": ">prt {id:res123 seq:1/2 eof:false lst:[\"item_A\",\"item_B\",\"item_C\"]}\n>ok {id:res123 seq:2/2 eof:true lst:[\"item_D\",\"item_E\"]}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -509,13 +509,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly generates two OpenLang L2 messages. The first uses `>prt` with `seq:1/2 eof:false` and the second uses `>ok` with `seq:2/2 eof:true`, fulfilling the requirement for streaming in two chunks with the second being the final one. The syntax is valid."
+      "reason": "The response correctly generates two OpenLang L2 messages: a `prt` with `seq:1/2 eof:false` and an `ok` with `seq:2/2 eof:true`, accurately representing a two-chunk stream where the second is the final chunk. It adds valid L2 parameters like `id` and `lst` which are appropriate for a 'large result' but not strictly required by the prompt's core condition, making it a complete and correct example."
     },
     {
       "test_id": "g16",
       "type": "generation",
-      "response": "```openlang\n{id:s1x from:scanner to:coordinator t:<TIMESTAMP> ttl_ms:10000\n ~hello {~cap {L:[1,2,3] ext:[fs,sh]} ver:0.2}\n}\n```",
-      "cleaned": "{id:s1x from:scanner to:coordinator t:<TIMESTAMP> ttl_ms:10000\n ~hello {~cap {L:[1,2,3] ext:[fs,sh]} ver:0.2}\n}",
+      "response": "{id:auto_gen_1 from:scanner to:coordinator t:auto_gen_ts ttl_ms:10000\n ~L2\n ~ack\n}",
+      "cleaned": "{id:auto_gen_1 from:scanner to:coordinator t:auto_gen_ts ttl_ms:10000\n ~L2\n ~ack\n}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -525,13 +525,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly constructs an OpenLang L2 envelope with the specified 'from', 'to', and 'ttl_ms' fields. It also includes a valid ID and timestamp, and wraps a sample message, fulfilling the prompt's request to 'Wrap a message in an envelope'."
+      "reason": "The response correctly generates a valid OpenLang envelope with the specified 'from', 'to', and 'ttl_ms' fields, and includes the `~L2` directive. The additional `id`, `t`, and `~ack` fields are standard and valid OpenLang envelope components, not errors."
     },
     {
       "test_id": "g17",
       "type": "generation",
-      "response": "`!git:mrg {src:\"feature-auth\" dest:\"main\"}`",
-      "cleaned": "!git:mrg {src:\"feature-auth\" dest:\"main\"}",
+      "response": "!git:mrg {from:feature-auth to:main}",
+      "cleaned": "!git:mrg {from:feature-auth to:main}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -541,13 +541,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly translates the Git merge command into OpenLang L2, using the `!git:mrg` scoped action prefix and a structured payload with `src` and `dest` branches."
+      "reason": "The response correctly translates the Git command into OpenLang L2, using the specified scoped action prefix `!git:mrg` and providing the `from` and `to` branches in a valid OpenLang dictionary format."
     },
     {
       "test_id": "g18",
       "type": "generation",
-      "response": "~L2\n^ea {$files} ->$f <<\n  !rd @fs {p:$f} ->$content;\n  ^if {$content.sz>0} <<\n    !prs @mem {src:$content} ->$parsed;\n    !fmt @mem {src:$parsed} ->$formatted\n  >>\n>>",
-      "cleaned": "~L2\n^ea {$files} ->$f <<\n  !rd @fs {p:$f} ->$content;\n  ^if {$content.sz>0} <<\n    !prs @mem {src:$content} ->$parsed;\n    !fmt @mem {src:$parsed} ->$formatted\n  >>\n>>",
+      "response": "^ea {$files} ->$f <<\n  ?rd @fs {p:$f} ->$content\n  ^if {$content.sz > 0} <<\n    !prs @mem {src:$content} ->$parsed\n    !wr @fs {p:$f content:(!fmt @mem {src:$parsed})}\n  >>\n>>",
+      "cleaned": "^ea {$files} ->$f <<\n  ?rd @fs {p:$f} ->$content\n  ^if {$content.sz > 0} <<\n    !prs @mem {src:$content} ->$parsed\n    !wr @fs {p:$f content:(!fmt @mem {src:$parsed})}\n  >>\n>>",
       "structural": {
         "valid": true,
         "errors": [],
@@ -557,13 +557,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly translates the natural language prompt into valid OpenLang L2. It uses `^ea` with `<< >>` block scoping as expected. The "
+      "reason": "The model correctly translates the prompt into OpenLang L2. It uses `^ea` for iteration, `<< >>` for block scoping, and `?rd`, `!prs`, `!fmt`, `!wr` commands as requested. The condition `{$content.sz > 0}` correctly checks if the content is not empty, fulfilling the "
     },
     {
       "test_id": "g19",
       "type": "generation",
-      "response": "`?fnd @db fld rcn {type:trade lmt:50}`",
-      "cleaned": "?fnd @db fld rcn {type:trade lmt:50}",
+      "response": "?fnd @db fld rcn {coll:trades} lmt:50",
+      "cleaned": "?fnd @db fld rcn {coll:trades} lmt:50",
       "structural": {
         "valid": true,
         "errors": [],
@@ -572,14 +572,14 @@
           "sigil_start": true
         }
       },
-      "score": 0,
-      "reason": "judge returned invalid format"
+      "score": 2,
+      "reason": "The model"
     },
     {
       "test_id": "g20",
       "type": "generation",
-      "response": "`>prt {pass:3 fl:1 detail:{f:\"validate.ts\" line:42 msg:\"test assertion failed\"}}`",
-      "cleaned": ">prt {pass:3 fl:1 detail:{f:\"validate.ts\" line:42 msg:\"test assertion failed\"}}",
+      "response": ">ok {pass:3 fl:1 detail:{f:\"validate.ts\" ln:42 err:\"assertion failed\"}}",
+      "cleaned": ">ok {pass:3 fl:1 detail:{f:\"validate.ts\" ln:42 err:\"assertion failed\"}}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -589,13 +589,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly uses `>prt` for a partial report, accurately reflects the pass/fail counts, and provides the file and line number for the failure within the `detail` object. The added `msg` field is a reasonable default for a test failure and does not detract from correctness."
+      "reason": "The response correctly generates an OpenLang L2 success message (>ok) with the specified pass/fail counts and the detailed failure location, including a reasonable default error message. It fully meets the prompt's requirements."
     },
     {
       "test_id": "g21",
       "type": "generation",
-      "response": "`Q.fs.fnd.`**/*.py`.rec.lmt.5`",
-      "cleaned": "`Q.fs.fnd.`**/*.py`.rec.lmt.5`",
+      "response": "Q.fs.fnd.py.rec.lmt:5",
+      "cleaned": "Q.fs.fnd.py.rec.lmt:5",
       "structural": {
         "valid": true,
         "errors": [],
@@ -604,14 +604,14 @@
           "sigil_start": true
         }
       },
-      "score": 2,
-      "reason": "The model correctly translates the request into OpenLang L3 bytecode. The use of `**/*.py` for recursive file matching (enclosed in backticks as a pattern literal) and `lmt.5` for the limit (using a named parameter) are plausible and often preferred syntactic variations compared to the more basic positional example given in `expected` (`*.py.rec.5`). The core intent and components are fully preserved and the syntax is period-delimited."
+      "score": 1,
+      "reason": "The response captures the core intent (find, fs, py, recursive, limit) but misses the wildcard `*` before `.py` and uses `lmt:5` instead of the specified positional `rec.5` for the limit, deviating from the 'period-delimited positional format' in the expected answer."
     },
     {
       "test_id": "g22",
       "type": "generation",
-      "response": "`R.ok.2.[`src/main.config.ts:10`,`src/app.config.ts:20`]`",
-      "cleaned": "`R.ok.2.[`src/main.config.ts:10`,`src/app.config.ts:20`]`",
+      "response": "R.ok.2.[`src/main.config.ts`:10,`src/app.config.ts`:20]",
+      "cleaned": "R.ok.2.[`src/main.config.ts`:10,`src/app.config.ts`:20]",
       "structural": {
         "valid": true,
         "errors": [],
@@ -621,7 +621,7 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly translates the input into OpenLang L3 bytecode, using `R.ok.2.`, a list, and backtick quoting for the items which contain filenames with periods and line numbers."
+      "reason": "The response correctly generates the OpenLang L3 bytecode, including the `R.ok` status, the count, and the array of items. It correctly applies backtick quoting for filenames containing periods and uses the `filename:line` format as expected."
     },
     {
       "test_id": "g23",
@@ -637,12 +637,12 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly declares a buffered channel of strings with capacity 100 in OpenLang L2. The channel name 'myChannel' is a valid choice as no specific name was provided in the input."
+      "reason": "The model correctly declared a buffered channel of strings with capacity 100. The channel name 'myChannel' is a valid choice as the input did not specify one."
     },
     {
       "test_id": "g24",
       "type": "generation",
-      "response": "`~unk {tok:\"xyz\" req:def}`",
+      "response": "~unk {tok:\"xyz\" req:def}",
       "cleaned": "~unk {tok:\"xyz\" req:def}",
       "structural": {
         "valid": true,
@@ -653,13 +653,13 @@
         }
       },
       "score": 2,
-      "reason": "The response perfectly matches the expected OpenLang L2 syntax for requesting a definition of an unknown token."
+      "reason": "The response perfectly matches the expected OpenLang L2 syntax for requesting the definition of an unknown token."
     },
     {
       "test_id": "g25",
       "type": "generation",
-      "response": "~L2\n^seq [\n  !run @sh {cmd:\"npm run build\"};\n  !run @sh {cmd:\"npm test\"};\n  !run @sh {cmd:\"npm run deploy\"}\n]",
-      "cleaned": "~L2\n^seq [\n  !run @sh {cmd:\"npm run build\"};\n  !run @sh {cmd:\"npm test\"};\n  !run @sh {cmd:\"npm run deploy\"}\n]",
+      "response": "^seq [!run @sh {cmd:\"build\"}, !run @sh {cmd:\"test\"}, !run @sh {cmd:\"deploy\"}]",
+      "cleaned": "^seq [!run @sh {cmd:\"build\"}, !run @sh {cmd:\"test\"}, !run @sh {cmd:\"deploy\"}]",
       "structural": {
         "valid": true,
         "errors": [],
@@ -669,13 +669,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly generates OpenLang L2, using a `^seq` construct with three `!run @sh` commands, accurately reflecting the input instruction 'Run three shell commands in sequence: build, test, deploy'."
+      "reason": "The response correctly generates an OpenLang L2 sequence (`^seq`) containing three `!run @sh` commands for 'build', 'test', and 'deploy', matching the prompt's requirements and the expected structure."
     },
     {
       "test_id": "g26",
       "type": "generation",
-      "response": "~L1: Limit requests: 100/min per user. If 429 error, retry with exponential backoff.\n\n~L2:\n!mod @net {cfg:{rate:{max:100 dur:60s by_key:$usr} err_policy:{on_code:429 act:expBackoff}}}",
-      "cleaned": "~L1: Limit requests: 100/min per user. If 429 error, retry with exponential backoff.\n\n~L2:\n!mod @net {cfg:{rate:{max:100 dur:60s by_key:$usr} err_policy:{on_code:429 act:expBackoff}}}",
+      "response": "~L1: Need to cap network requests: 100/min/user. If get 429, retry with exponential delay.\n~L2:\n!mod @net {rate_lmt:{max:100 dur:60s per:usr} on_fail:{code:429 act:{type:backoff mode:exp}}}",
+      "cleaned": "~L1: Need to cap network requests: 100/min/user. If get 429, retry with exponential delay.\n~L2:\n!mod @net {rate_lmt:{max:100 dur:60s per:usr} on_fail:{code:429 act:{type:backoff mode:exp}}}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -685,13 +685,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly uses L1 to explain the concept and then formalizes it accurately in L2, preserving all details from the input prompt in valid OpenLang syntax."
+      "reason": "The response correctly provides both the L1 explanation and the L2 formalized OpenLang. The L1 explanation accurately captures the concept. The L2 OpenLang syntax is valid and perfectly translates all specified requirements: max 100 requests per minute per user, and exponential backoff on 429 status codes."
     },
     {
       "test_id": "g27",
       "type": "generation",
-      "response": "```openlang\n{id:cpv1 from:agent_src to:agent_dst\n !cpy @fs {src:\"src/*.js\" dst:\"backup/\"}; !vfy @fs {p:\"backup/\"}\n}\n```",
-      "cleaned": "{id:cpv1 from:agent_src to:agent_dst\n !cpy @fs {src:\"src/*.js\" dst:\"backup/\"}; !vfy @fs {p:\"backup/\"}\n}",
+      "response": "!cpy @fs {p:\"src/*.js\" dst:\"backup/\"}; !vfy @fs {p:\"backup/\"}",
+      "cleaned": "!cpy @fs {p:\"src/*.js\" dst:\"backup/\"}; !vfy @fs {p:\"backup/\"}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -701,7 +701,7 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly translates the natural language request into a syntactically valid and semantically accurate OpenLang L2 message. It correctly identifies the copy and verify commands for the filesystem and provides the specific source, destination, and path parameters. The message envelope is also consistent with OpenLang L2 structure."
+      "reason": "The model correctly translates the natural language prompt into valid OpenLang L2 syntax, using `!cpy @fs` with source/destination parameters and `!vfy @fs` for verification, separated by a semicolon."
     },
     {
       "test_id": "g28",
@@ -717,13 +717,13 @@
         }
       },
       "score": 2,
-      "reason": "The model's response `?fnd @net act hlt` correctly translates 'Find all active, healthy network services' into OpenLang L2, demonstrating qualifier stacking as implied by the prompt. The 'with qualifier stacking' in the expected output is a descriptive phrase about the syntax, not part of the syntax itself."
+      "reason": "The response correctly generates the OpenLang L2 command '?fnd @net act hlt' from the input. The 'with qualifier stacking' in the expected field is a description of the OpenLang feature, not part of the OpenLang itself."
     },
     {
       "test_id": "g29",
       "type": "generation",
-      "response": "`!snd @net {m:POST url:\"https://api.example.com/register\" h:{Content-Type:\"application/json\"} b:{name:\"John Doe\" email:\"john.doe@example.com\"}}`",
-      "cleaned": "!snd @net {m:POST url:\"https://api.example.com/register\" h:{Content-Type:\"application/json\"} b:{name:\"John Doe\" email:\"john.doe@example.com\"}}",
+      "response": "!snd @net {m:post p:\"/api/endpoint\" ct:json b:{name:\"John Doe\" email:\"john.doe@example.com\"}}",
+      "cleaned": "!snd @net {m:post p:\"/api/endpoint\" ct:json b:{name:\"John Doe\" email:\"john.doe@example.com\"}}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -733,13 +733,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly generates an OpenLang L2 command to send a POST request with the specified method and JSON body parameters. It also correctly infers common details like a URL and Content-Type header, making it a complete and valid OpenLang representation of the input."
+      "reason": "The response correctly translates the natural language instruction into a valid OpenLang L2 command for sending a POST request with a JSON body, including method, path, content-type, and body parameters with example values. It fulfills the prompt's requirements."
     },
     {
       "test_id": "g30",
       "type": "generation",
-      "response": "```openlang\n{id:new_query_id\n ?fnd @fs {p:&k3.r.paths} ->$found_items\n}\n```",
-      "cleaned": "{id:new_query_id\n ?fnd @fs {p:&k3.r.paths} ->$found_items\n}",
+      "response": "?rd @fs {p:&k3.r.path}",
+      "cleaned": "?rd @fs {p:&k3.r.path}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -749,12 +749,12 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly uses the `&k3.r` syntax to reference the result of a previous message and integrates it as input to a new query within a valid OpenLang message structure."
+      "reason": "The response correctly uses `&k3.r` to reference the result of a previous message with id "
     },
     {
       "test_id": "g31",
       "type": "generation",
-      "response": "`?fnd @fs {p:\"**/*.ts\" p:!~\"**/*.spec.ts\" p:!~\"**/node_modules/**\"}`",
+      "response": "?fnd @fs {p:\"**/*.ts\" p:!~\"**/*.spec.ts\" p:!~\"**/node_modules/**\"}",
       "cleaned": "?fnd @fs {p:\"**/*.ts\" p:!~\"**/*.spec.ts\" p:!~\"**/node_modules/**\"}",
       "structural": {
         "valid": true,
@@ -765,13 +765,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly translates the natural language request into OpenLang L2, using the `!~` operator for negation on the glob patterns, and correctly structuring the command."
+      "reason": "The response correctly translates the natural language query into OpenLang L2, accurately using `!~` twice for the two negative conditions as described in the expected behavior."
     },
     {
       "test_id": "g32",
       "type": "generation",
-      "response": "```openlang\n?fnd @proc {qual:old qual:idl} ->$old_idle_procs;\n^ea {$old_idle_procs} ->$p <<\n  !proc:term {pid:$p.id};\n  !wr @fs {p:\"/archive/proc_states/old_idle_$p.id.json\" content:$p.state}\n>>;\n?fnd @proc {qual:stl} ->$stale_procs;\n^ea {$stale_procs} ->$p !proc:term {pid:$p.id}\n```",
-      "cleaned": "?fnd @proc {qual:old qual:idl} ->$old_idle_procs;\n^ea {$old_idle_procs} ->$p <<\n  !proc:term {pid:$p.id};\n  !wr @fs {p:\"/archive/proc_states/old_idle_$p.id.json\" content:$p.state}\n>>;\n?fnd @proc {qual:stl} ->$stale_procs;\n^ea {$stale_procs} ->$p !proc:term {pid:$p.id}",
+      "response": "?fnd @fs old idl {p:\"/var/proc_data/**\"} ->$old_idle_data; !mv @fs {src:$old_idle_data dest:\"/var/proc_archive/\"}; ?fnd @fs stl {p:\"/var/proc_data/**\"} ->$stale_data; !del @fs {p:$stale_data}",
+      "cleaned": "?fnd @fs old idl {p:\"/var/proc_data/**\"} ->$old_idle_data; !mv @fs {src:$old_idle_data dest:\"/var/proc_archive/\"}; ?fnd @fs stl {p:\"/var/proc_data/**\"} ->$stale_data; !del @fs {p:$stale_data}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -781,13 +781,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly uses qualifier stacking (`qual:old qual:idl`, `qual:stl`) as expected. The actions for 'moving to archive' (terminating and writing state) and 'deleting stale ones' (terminating) are appropriate and correctly translated into OpenLang L2 syntax."
+      "reason": "The response correctly translates the request into OpenLang L2, using qualifier stacking ('old idl', 'stl') and appropriate actions ('?fnd', '!mv', '!del') to achieve the specified operations. The syntax is valid."
     },
     {
       "test_id": "g33",
       "type": "generation",
-      "response": "`^tmo:120 {^wt {cond:'ready'}}`",
-      "cleaned": "^tmo:120 {^wt {cond:'ready'}}",
+      "response": "^wt {cond:ready} ^tmo:120",
+      "cleaned": "^wt {cond:ready} ^tmo:120",
       "structural": {
         "valid": true,
         "errors": [],
@@ -797,13 +797,13 @@
         }
       },
       "score": 1,
-      "reason": "The response correctly identifies the wait and timeout commands (`^wt`, `^tmo`) and their parameters. However, it completely misses the instruction to 'fail if it times out', which is represented by `with ^el for timeout failure` in the expected output. The use of quotes around 'ready' in `cond:'ready'` might be minor stylistic or a slight syntax deviation depending on OpenLang's strictness, but the omission of error handling is significant."
+      "reason": "The response correctly translates 'wait for condition ready' and '120 second timeout' but omits the instruction to 'fail if it times out' (expected as `with ^el for timeout failure`)."
     },
     {
       "test_id": "g34",
       "type": "generation",
-      "response": "`^ea {?fnd @fs chg {p:\"src/**\"}} ->$f << !fmt @fs {p:$f}; !vfy @fs {p:$f} >>`",
-      "cleaned": "^ea {?fnd @fs chg {p:\"src/**\"}} ->$f << !fmt @fs {p:$f}; !vfy @fs {p:$f} >>",
+      "response": "?fnd @fs chg {p:\"src/**\"} ->$files; ^ea {$files} ->$file << !fmt @fs {p:$file}; !vfy @fs {p:$file} >>",
+      "cleaned": "?fnd @fs chg {p:\"src/**\"} ->$files; ^ea {$files} ->$file << !fmt @fs {p:$file}; !vfy @fs {p:$file} >>",
       "structural": {
         "valid": true,
         "errors": [],
@@ -813,13 +813,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly implements all aspects of the prompt, including the "
+      "reason": "The response correctly translates the natural language input into valid and complete OpenLang L2. The 'expected' value provided in the prompt is not a valid OpenLang L2 statement."
     },
     {
       "test_id": "g35",
       "type": "generation",
-      "response": "```openlang\n{id:A_req_count_lines from:A to:B\n  ?rd @fs {p:\"main.ts\"} ->$content;\n  !prs @mem {src:$content ret:lines}\n}\n\n{id:B_res_count_lines from:B to:A &A_req_count_lines\n  >ok {lines:123}\n}\n```",
-      "cleaned": "{id:A_req_count_lines from:A to:B\n  ?rd @fs {p:\"main.ts\"} ->$content;\n  !prs @mem {src:$content ret:lines}\n}\n\n{id:B_res_count_lines from:B to:A &A_req_count_lines\n  >ok {lines:123}\n}",
+      "response": "{id:a1 from:a to:b\n ?cnt @fs {p:\"main.ts\" unit:lines}\n}\n{id:b1 from:b to:a &a1\n >ok {val:123 unit:lines}\n}",
+      "cleaned": "{id:a1 from:a to:b\n ?cnt @fs {p:\"main.ts\" unit:lines}\n}\n{id:b1 from:b to:a &a1\n >ok {val:123 unit:lines}\n}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -829,13 +829,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly implements a two-message OpenLang L2 exchange. Agent A's request uses valid `?rd` and `!prs` primitives to implicitly ask agent B to read a file and then process its content to count lines, storing the result. Agent B's response correctly links back to A's request and provides the line count via `>ok`. All syntax is valid OpenLang L2."
+      "reason": "The response correctly generates two OpenLang L2 message envelopes. The first message from 'a' to 'b' queries for a count of lines in 'main.ts' using a plausible '@fs' service. The second message from 'b' to 'a' correctly responds to the first message's ID with an 'ok' status and the counted value."
     },
     {
       "test_id": "r01",
       "type": "roundtrip",
-      "response": "{id:a1c\n>ok {pass:5 fl:2 detail:[{f:\"auth.ts\" ln:15},{f:\"db.ts\" ln:88}]}\n}",
-      "cleaned": "{id:a1c\n>ok {pass:5 fl:2 detail:[{f:\"auth.ts\" ln:15},{f:\"db.ts\" ln:88}]}\n}",
+      "response": ">ok {pass:5 fl:2 detail:[{f:\"auth.ts\" ln:15}, {f:\"db.ts\" ln:88}]}",
+      "cleaned": ">ok {pass:5 fl:2 detail:[{f:\"auth.ts\" ln:15}, {f:\"db.ts\" ln:88}]}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -845,13 +845,13 @@
         }
       },
       "score": 2,
-      "reason": "The model correctly parsed the natural language input and generated a syntactically valid OpenLang L2 response. It accurately extracted the pass/fail counts and the details of the failures, matching the expected content."
+      "reason": "The model correctly translated the natural language input into valid OpenLang L2, preserving all details: pass count, fail count, and the specific failure locations with file and line numbers, matching the expected structure."
     },
     {
       "test_id": "r02",
       "type": "roundtrip",
-      "response": "{id:ol_m3_ack_err from:AIAgent to:User t:$(date +%s%N | cut -b1-13)\n ~err {id:&m3 code:E_FS_NOT_FOUND lvl:fatal msg:\"Requested file not found.\"}\n}",
-      "cleaned": "{id:ol_m3_ack_err from:AIAgent to:User t:$(date +%s%N | cut -b1-13)\n ~err {id:&m3 code:E_FS_NOT_FOUND lvl:fatal msg:\"Requested file not found.\"}\n}",
+      "response": "{id:o1 from:model to:user t:1718044800\n ~err {id:&m3 code:E_FS_NOT_FOUND lvl:fatal msg:\"Requested file not found\"}\n}",
+      "cleaned": "{id:o1 from:model to:user t:1718044800\n ~err {id:&m3 code:E_FS_NOT_FOUND lvl:fatal msg:\"Requested file not found\"}\n}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -861,13 +861,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly uses an `~err` directive referencing `&m3` and specifies the `E_FS_NOT_FOUND` error code, adhering to OpenLang L2 syntax and the expected behavior."
+      "reason": "The response correctly uses an `~err` command referencing `&m3` and includes the specified `E_FS_NOT_FOUND` error code, matching the expected output and fulfilling the prompt's requirements in valid OpenLang L2."
     },
     {
       "test_id": "r03",
       "type": "roundtrip",
-      "response": ">ok {n:3 lst:[{p:\"api.ts:42\" msg:\"fix auth\"}, {p:\"db.ts:18\" msg:\"add pooling\"}, {p:\"utils.ts:7\" msg:\"refactor\"}]}",
-      "cleaned": ">ok {n:3 lst:[{p:\"api.ts:42\" msg:\"fix auth\"}, {p:\"db.ts:18\" msg:\"add pooling\"}, {p:\"utils.ts:7\" msg:\"refactor\"}]}",
+      "response": ">ok {n:3 lst:[{p:\"api.ts\" ln:42 msg:\"fix auth\"},{p:\"db.ts\" ln:18 msg:\"add pooling\"},{p:\"utils.ts\" ln:7 msg:\"refactor\"}]}",
+      "cleaned": ">ok {n:3 lst:[{p:\"api.ts\" ln:42 msg:\"fix auth\"},{p:\"db.ts\" ln:18 msg:\"add pooling\"},{p:\"utils.ts\" ln:7 msg:\"refactor\"}]}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -877,13 +877,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly parses the input into OpenLang L2, accurately listing the 3 TODOs with their paths (file:line) and messages, matching the expected format."
+      "reason": "The model correctly extracted all TODO comments with their file, line, and message, and formatted them into a valid OpenLang L2 structure with an 'ok' status, a count 'n', and a list 'lst' of findings."
     },
     {
       "test_id": "r04",
       "type": "roundtrip",
-      "response": "`~err {id:e1f code:E_SH_FAIL lvl:warn msg:\"Build failed: TypeScript found 4 type errors.\"}`",
-      "cleaned": "~err {id:e1f code:E_SH_FAIL lvl:warn msg:\"Build failed: TypeScript found 4 type errors.\"}",
+      "response": "~err {code:E_SH_FAIL lvl:warn msg:\"build failed: 4 TypeScript type errors\"}",
+      "cleaned": "~err {code:E_SH_FAIL lvl:warn msg:\"build failed: 4 TypeScript type errors\"}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -893,13 +893,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly translates the input into a valid OpenLang L2 error message, including a code, the specified warning level, and relevant details about the build failure and type errors, matching the expected output description."
+      "reason": "The model correctly interpreted the request to report a warning-level error in OpenLang L2, capturing all essential details (build failure, type errors, warning level) and providing a relevant error code. The syntax is correct and the content aligns perfectly with the input and expected structure."
     },
     {
       "test_id": "r05",
       "type": "roundtrip",
-      "response": "```openlang\n{id:k1 from:user to:agent\n ?fnd @fs chg rcn {p:\"**/*.py\" p:!~\"**/*_test.py\" p:!~\"**/test_*.py\"} ->$files\n ^ea {$files} ->$f {!run @sh {cmd:\"pytest $f\"}}\n}\n```",
-      "cleaned": "{id:k1 from:user to:agent\n ?fnd @fs chg rcn {p:\"**/*.py\" p:!~\"**/*_test.py\" p:!~\"**/test_*.py\"} ->$files\n ^ea {$files} ->$f {!run @sh {cmd:\"pytest $f\"}}\n}",
+      "response": "?fnd @fs chg rcn {p:\"**/*.py\" p:!~\"**/*_test.py\"} ->$lst | ^ea {$lst} ->$file {!run @sh {cmd:\"pytest $file\"}}",
+      "cleaned": "?fnd @fs chg rcn {p:\"**/*.py\" p:!~\"**/*_test.py\"} ->$lst | ^ea {$lst} ->$file {!run @sh {cmd:\"pytest $file\"}}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -909,13 +909,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly translates the English request into valid OpenLang L2, covering file searching, recent modification, exclusion of test files using negation patterns, and iterating to run pytest on each found file. It perfectly matches the functionality described in the 'expected' description."
+      "reason": "The response accurately translates the natural language input into a correct and idiomatic OpenLang L2 command. It correctly identifies the `find` operation, filters by recent changes, includes Python files, excludes test files using pattern negation, stores the results in a list, iterates over them, and executes a pytest command for each file. All syntax and semantics are valid."
     },
     {
       "test_id": "r06",
       "type": "roundtrip",
-      "response": "#ctx {agents:{act:4 idl:2} mem:{use:83%} disk:{status:hlt}}",
-      "cleaned": "#ctx {agents:{act:4 idl:2} mem:{use:83%} disk:{status:hlt}}",
+      "response": "#ctx @proc {act:4 idl:2} @mem {use:83} @fs {dsk:hlt}",
+      "cleaned": "#ctx @proc {act:4 idl:2} @mem {use:83} @fs {dsk:hlt}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -925,13 +925,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly translates all requested system state information into valid OpenLang L2 syntax using the #ctx token, qualifier tokens, and numeric values as expected."
+      "reason": "The response correctly translates all specified system state information into OpenLang L2 using the #ctx token, appropriate qualifier tokens, and numeric/state values as expected. All details from the input prompt are preserved."
     },
     {
       "test_id": "r07",
       "type": "roundtrip",
-      "response": "```openlang\n{id:req_a1 from:user to:model\n !<\n   ^frk:lint !run @sh {cmd:\"npm run lint\"}\n   ^frk:test !tst @sh {cmd:\"npm run test\"}\n   ^frk:build !run @sh {cmd:\"npm run build\"}\n   ^jn [lint,test,build] ^tmo:120 ->$task_results\n >\n}\n```",
-      "cleaned": "{id:req_a1 from:user to:model\n !<\n   ^frk:lint !run @sh {cmd:\"npm run lint\"}\n   ^frk:test !tst @sh {cmd:\"npm run test\"}\n   ^frk:build !run @sh {cmd:\"npm run build\"}\n   ^jn [lint,test,build] ^tmo:120 ->$task_results\n >\n}",
+      "response": "{id:a1\n^frk:lint !run @sh {cmd:\"npm run lint\"}\n^frk:test !run @sh {cmd:\"npm run test\"}\n^frk:build !run @sh {cmd:\"npm run build\"}\n^jn [lint,test,build] ^tmo:120 ->$results\n}",
+      "cleaned": "{id:a1\n^frk:lint !run @sh {cmd:\"npm run lint\"}\n^frk:test !run @sh {cmd:\"npm run test\"}\n^frk:build !run @sh {cmd:\"npm run build\"}\n^jn [lint,test,build] ^tmo:120 ->$results\n}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -941,13 +941,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly translates the prompt into a syntactically valid OpenLang L2 structure. It uses `^frk` for parallel tasks, `^jn` with `^tmo:120` for joining with a timeout, and implicitly reports results by storing them in a variable which would be the output of the `>` block. The additional `!run` and `!tst` commands are appropriate for L2 detail."
+      "reason": "The response correctly forks the three specified tasks, joins them with the precise 2-minute timeout, and uses '->results' to capture the outcome, which aligns with 'report results'. The syntax is valid OpenLang."
     },
     {
       "test_id": "r08",
       "type": "roundtrip",
-      "response": "{id:a1 from:OpenLangBot to:User\n ~def {tok:\"dpl\" means:\"deploy\"}\n ~def {tok:\"rlb\" means:\"rollback\"}\n}",
-      "cleaned": "{id:a1 from:OpenLangBot to:User\n ~def {tok:\"dpl\" means:\"deploy\"}\n ~def {tok:\"rlb\" means:\"rollback\"}\n}",
+      "response": "~def {tok:\"dpl\" means:\"deploy\"}~def {tok:\"rlb\" means:\"rollback\"}",
+      "cleaned": "~def {tok:\"dpl\" means:\"deploy\"}~def {tok:\"rlb\" means:\"rollback\"}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -957,13 +957,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly defines both 'dpl' and 'rlb' tokens with their specified meanings using valid OpenLang L2 ~def statements."
+      "reason": "The response correctly defines both 'dpl' for 'deploy' and 'rlb' for 'rollback' using the specified OpenLang L2 `~def` syntax. It fully matches the expected output and the input request."
     },
     {
       "test_id": "r09",
       "type": "roundtrip",
-      "response": "`>prt {seq:\"1/4\" eof:false cnt:50 exp:200}`",
-      "cleaned": ">prt {seq:\"1/4\" eof:false cnt:50 exp:200}",
+      "response": ">prt {id:xyz seq:1/4 eof:false processed:50 total:200}",
+      "cleaned": ">prt {id:xyz seq:1/4 eof:false processed:50 total:200}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -973,13 +973,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly uses the `>prt` command, provides the sequence information `seq:\"1/4\"`, sets `eof:false`, and accurately includes the progress details `cnt:50 exp:200` as requested. All elements from the prompt are present and correctly formatted in OpenLang L2."
+      "reason": "The response correctly uses the `prt` command, `seq:1/4`, `eof:false`, and `processed:50 total:200` as specified in the prompt and implied by 'progress info' in the expected description."
     },
     {
       "test_id": "r10",
       "type": "roundtrip",
-      "response": "{id:a1 ~unk {tok:\"zqx\" req:def}}",
-      "cleaned": "{id:a1 ~unk {tok:\"zqx\" req:def}}",
+      "response": "{id:msg1 from:agent_self to:agent_user\n~unk {tok:\"zqx\" req:def}\n}",
+      "cleaned": "{id:msg1 from:agent_self to:agent_user\n~unk {tok:\"zqx\" req:def}\n}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -988,14 +988,14 @@
           "sigil_start": true
         }
       },
-      "score": 1,
-      "reason": "The core OpenLang message `~unk {tok:\\"
+      "score": 2,
+      "reason": "The model correctly generated the requested OpenLang L2 content (~unk {tok:\\"
     },
     {
       "test_id": "r11",
       "type": "roundtrip",
-      "response": "```openlang\n{id:a1 from:worker to:manager t:1709641200\n ~L2\n >ok {op:db:mrg status:complete}\n}\n```",
-      "cleaned": "{id:a1 from:worker to:manager t:1709641200\n ~L2\n >ok {op:db:mrg status:complete}\n}",
+      "response": "{id:msg_db_001 from:worker to:manager t:1709641200\n>ok @db:mig {res:true}\n}",
+      "cleaned": "{id:msg_db_001 from:worker to:manager t:1709641200\n>ok @db:mig {res:true}\n}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -1005,13 +1005,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly constructs an OpenLang L2 envelope from "
+      "reason": "The response correctly uses an OpenLang L2 envelope from "
     },
     {
       "test_id": "r12",
       "type": "roundtrip",
-      "response": "```openlang\n{id:k1 from:agent_a to:agent_b\n ?rd @fs {p:\"./config.json\"} ->$cfg_raw\n !prs @mem {src:$cfg_raw type:json} ->$cfg\n !tst @db {url:$cfg.db.url}\n}\n```",
-      "cleaned": "{id:k1 from:agent_a to:agent_b\n ?rd @fs {p:\"./config.json\"} ->$cfg_raw\n !prs @mem {src:$cfg_raw type:json} ->$cfg\n !tst @db {url:$cfg.db.url}\n}",
+      "response": "{id:a1\n?rd @fs {p:\"config.json\"} ->$cfg;\n!tst @db {url:$cfg.db.url}\n}",
+      "cleaned": "{id:a1\n?rd @fs {p:\"config.json\"} ->$cfg;\n!tst @db {url:$cfg.db.url}\n}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -1021,13 +1021,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly translates the natural language input into a syntactically valid OpenLang L2 program. It includes all necessary steps: reading from the filesystem, parsing the content (implicitly JSON given the context of property access), extracting the specific URL property, and testing the database connection. This aligns with the conceptual operations described in the 'expected' L1 format, adding the necessary parsing step for a complete L2 program."
+      "reason": "The response correctly translates the instruction into OpenLang L2, using `?rd` to read a file into a variable, property access `$cfg.db.url` to extract the URL, and `!tst @db` to test the connection with the extracted URL. All expected elements are present and syntactically correct."
     },
     {
       "test_id": "r13",
       "type": "roundtrip",
-      "response": "`^lk:deploy_slot; !run @sh {cmd:\"deploy_command_here\"}; ^ulk:deploy_slot`",
-      "cleaned": "^lk:deploy_slot; !run @sh {cmd:\"deploy_command_here\"}; ^ulk:deploy_slot",
+      "response": "^lk:deploy_slot; !run @sh {cmd:\"deploy-app --prod\"}; ^ulk:deploy_slot",
+      "cleaned": "^lk:deploy_slot; !run @sh {cmd:\"deploy-app --prod\"}; ^ulk:deploy_slot",
       "structural": {
         "valid": true,
         "errors": [],
@@ -1037,13 +1037,13 @@
         }
       },
       "score": 1,
-      "reason": "The model correctly translates the sequence of operations (lock, run, unlock) and the resource name. However, it deviates from the expected response by using ';' as a separator instead of ',' and by adding an explicit 'cmd' argument to the '!run @sh' command, whereas the expected response uses a simpler form without explicit arguments. The gist is correct, but details differ from the expected output."
+      "reason": "The model added an unprompted specific command parameter to the `!run` action and used semicolons instead of commas as separators (both are valid in OpenLang L2, but comma was in expected). The core logic of locking, running, and unlocking is correct."
     },
     {
       "test_id": "r14",
       "type": "roundtrip",
-      "response": "```openlang\n{id:a1 from:you to:me\n ?fnd @fs {p:\"cache/\" lrg stale} ->$files; ^ea {$files} ->$f {!del @fs {p:$f}}\n}\n```",
-      "cleaned": "{id:a1 from:you to:me\n ?fnd @fs {p:\"cache/\" lrg stale} ->$files; ^ea {$files} ->$f {!del @fs {p:$f}}\n}",
+      "response": "?fnd @fs lrg stl {p:\"cache/\"} ->$files | ^ea {$files} ->$file !del @fs {p:$file}",
+      "cleaned": "?fnd @fs lrg stl {p:\"cache/\"} ->$files | ^ea {$files} ->$file !del @fs {p:$file}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -1053,13 +1053,13 @@
         }
       },
       "score": 2,
-      "reason": "The response accurately translates the instruction into valid OpenLang L2. The explicit iteration and deletion are a correct and robust implementation of the requested action. The 'expected' output is more of a high-level description and not fully valid OpenLang syntax itself (e.g., 'with path', 'pipe to !del' are natural language, not OpenLang). The model's response is a complete and correct OpenLang program."
+      "reason": "The model's response correctly translates the natural language input into valid OpenLang L2. It accurately identifies 'large stale files,' specifies the 'cache/' directory using the `p:` constraint, and correctly sets up a pipeline to iterate and delete each found file. The 'expected' response is not syntactically valid OpenLang L2 (e.g., 'with path', 'pipe to !del' are descriptions, not commands), making the model's fully formed L2 output superior in correctness and completeness."
     },
     {
       "test_id": "r15",
       "type": "roundtrip",
-      "response": "{id:a1 from:model to:user\n ~L1: I see how multiple agents might try to fix the same error with the retry logic, potentially leading to wasted effort or conflicting updates if they don't coordinate. This is a common race condition.\n ~L2:\n ^lk:retry_op_mutex <<\n   #ctx {status:pnd}\n   !run @proc {op:retry_failed_task id:&a0.r.task_id}\n   >ok {res:true} | ~err {res:false}\n   #ctx {status:done}\n >>\n ^ulk:retry_op_mutex\n}",
-      "cleaned": "{id:a1 from:model to:user\n ~L1: I see how multiple agents might try to fix the same error with the retry logic, potentially leading to wasted effort or conflicting updates if they don't coordinate. This is a common race condition.\n ~L2:\n ^lk:retry_op_mutex <<\n   #ctx {status:pnd}\n   !run @proc {op:retry_failed_task id:&a0.r.task_id}\n   >ok {res:true} | ~err {res:false}\n   #ctx {status:done}\n >>\n ^ulk:retry_op_mutex\n}",
+      "response": "~L1: I suspect the current retry logic has a race condition, potentially causing multiple agents to attempt retries on the same resource simultaneously.\n~L2:\n^ea {$failed_resource_ids} ->$res_id <<\n  ^lk:res_op:$res_id <<\n    !op:retry_action {id:$res_id} ->$retry_status\n    ^if neg {$retry_status.ok} {~err {code:E_RETRY_FAIL lvl:warn msg:\"Retry failed again\" res:$res_id}}\n  >>\n  ^ulk:res_op:$res_id\n>>",
+      "cleaned": "~L1: I suspect the current retry logic has a race condition, potentially causing multiple agents to attempt retries on the same resource simultaneously.\n~L2:\n^ea {$failed_resource_ids} ->$res_id <<\n  ^lk:res_op:$res_id <<\n    !op:retry_action {id:$res_id} ->$retry_status\n    ^if neg {$retry_status.ok} {~err {code:E_RETRY_FAIL lvl:warn msg:\"Retry failed again\" res:$res_id}}\n  >>\n  ^ulk:res_op:$res_id\n>>",
       "structural": {
         "valid": true,
         "errors": [],
@@ -1069,13 +1069,13 @@
         }
       },
       "score": 2,
-      "reason": "The model correctly explained the race condition in L1 and then proposed a fix using a mutex lock in L2, following all instructions and using valid OpenLang syntax."
+      "reason": "The response correctly explains the race condition in L1 and then switches to L2 to propose a fix using OpenLang's ^lk (lock) and ^ulk (unlock) primitives, directly addressing the mutex lock requirement."
     },
     {
       "test_id": "r16",
       "type": "roundtrip",
-      "response": "`>ok {act:git:mrg src:\"feature\" dst:\"main\" chg:12 conf:0}`",
-      "cleaned": ">ok {act:git:mrg src:\"feature\" dst:\"main\" chg:12 conf:0}",
+      "response": ">ok {act:git:mrg src:feature dst:main chg:12 conf:0}",
+      "cleaned": ">ok {act:git:mrg src:feature dst:main chg:12 conf:0}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -1085,13 +1085,13 @@
         }
       },
       "score": 2,
-      "reason": "The model correctly responded in OpenLang L2 as explicitly requested by the prompt. The response is syntactically valid and accurately captures all details from the input. The `expected` output was in OpenLang L1, which contradicted the prompt's instruction to respond in L2; the model correctly prioritized the L2 instruction."
+      "reason": "The model's response fully satisfies all conditions of the prompt by providing a detailed OpenLang L2 report of the successful git merge with the specified file changes and no conflicts. The 'expected' field seems to be a higher-level description or general example, while the model provided a complete and accurate specific example using valid OpenLang L2 syntax."
     },
     {
       "test_id": "r17",
       "type": "roundtrip",
-      "response": "#svcs:[\"auth-api\",\"data-svc\",\"ui-web\"] ->$serviceList;\n#taskIDs:[] ->$taskIDs;\n\n^ea {$serviceList} ->$svc <<\n  ^frk:$svc !vfy @svc {name:$svc path:\"/health\" tmo:5};\n  #taskIDs:($taskIDs + [$svc]);\n>>\n\n^jn {$taskIDs} ->$healthReport;\n>ok {report:$healthReport}",
-      "cleaned": "#svcs:[\"auth-api\",\"data-svc\",\"ui-web\"] ->$serviceList;\n#taskIDs:[] ->$taskIDs;\n\n^ea {$serviceList} ->$svc <<\n  ^frk:$svc !vfy @svc {name:$svc path:\"/health\" tmo:5};\n  #taskIDs:($taskIDs + [$svc]);\n>>\n\n^jn {$taskIDs} ->$healthReport;\n>ok {report:$healthReport}",
+      "response": "#ctx {services:[\"serviceA.com\",\"serviceB.net\",\"serviceC.org\"]};\n#rpt:lst [];\n^ea {$ctx.services} ->$svc_url <<\n  !vfy @net {target:$svc_url} ->$health_status;\n  !mod @mem {target:$rpt add:{url:$svc_url status:$health_status.status msg:$health_status.msg}}\n>>;\n>$health_report {$rpt}",
+      "cleaned": "#ctx {services:[\"serviceA.com\",\"serviceB.net\",\"serviceC.org\"]};\n#rpt:lst [];\n^ea {$ctx.services} ->$svc_url <<\n  !vfy @net {target:$svc_url} ->$health_status;\n  !mod @mem {target:$rpt add:{url:$svc_url status:$health_status.status msg:$health_status.msg}}\n>>;\n>$health_report {$rpt}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -1101,13 +1101,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly implements all aspects of the prompt using valid OpenLang L2. It iterates over a list of services (`^ea`), performs a health check for each (`!vfy @svc`), forks these checks (`^frk`), and collects the results into a report (`^jn`). The concrete implementation, while more detailed than the high-level `expected` description, perfectly fulfills the requirements of the roundtrip test."
+      "reason": "The response correctly translates the natural language prompt into valid OpenLang L2. It initializes a list of services, iterates over them using `^ea`, performs a network verification (`!vfy @net`) for each, and collects the results into a report list (`$rpt`) using `!mod @mem`, finally exporting it. This accurately fulfills all requirements."
     },
     {
       "test_id": "r18",
       "type": "roundtrip",
-      "response": "{id:h1 from:sentinel\n ~hello {~cap {L:[1,2,3] ext:[fs,sh,net,git]} ver:0.2}\n}",
-      "cleaned": "{id:h1 from:sentinel\n ~hello {~cap {L:[1,2,3] ext:[fs,sh,net,git]} ver:0.2}\n}",
+      "response": "{id:1 from:sentinel ~hello {~cap {L:[1,2,3] ext:[fs,sh,net,git]} ver:0.2}}",
+      "cleaned": "{id:1 from:sentinel ~hello {~cap {L:[1,2,3] ext:[fs,sh,net,git]} ver:0.2}}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -1117,13 +1117,45 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly generates an OpenLang L2 handshake message. It uses the specified agent 'sentinel', lists all three levels `[1,2,3]`, and includes all required capabilities `[fs,sh,net,git]` within a properly structured `~cap` object inside `~hello`."
+      "reason": "The model correctly generated an OpenLang L2 handshake message (`~hello`) from the natural language prompt, including the specified agent name ('sentinel'), all three capability levels (`L:[1,2,3]`), and the correct list of extension capabilities (`ext:[fs,sh,net,git]`). The structure is valid OpenLang L2."
     },
     {
       "test_id": "r19",
       "type": "roundtrip",
-      "response": "`R.ok.3.[`parser.ts`:5,`lexer.ts`:12,`compiler.ts`:3]`",
-      "cleaned": "`R.ok.3.[`parser.ts`:5,`lexer.ts`:12,`compiler.ts`:3]`",
+      "response": "R.ok.3.[`parser.ts`:5,`lexer.ts`:12,`compiler.ts`:3]",
+      "cleaned": "R.ok.3.[`parser.ts`:5,`lexer.ts`:12,`compiler.ts`:3]",
+      "structural": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "balanced": true,
+          "sigil_start": true
+        }
+      },
+      "score": 2,
+      "reason": "The response accurately translates the input into OpenLang L3 bytecode. It correctly indicates success (`R.ok`), the count of 3 items, and a list of the files and their line numbers. The use of square brackets `[...]` for a list and comma-separated elements within it is standard practice for representing lists in structured formats like OpenLang L3. The backticks for string literals are also appropriate. While the 'expected' description mentions 'period-delimited format' for the `[...]` part, this phrase is ambiguous and potentially contradictory when `[...]` implies a standard list. The response provides a clear and standard list representation that fully preserves the input information and is syntactically sound for a list structure within a dot-notation bytecode."
+    },
+    {
+      "test_id": "r20",
+      "type": "roundtrip",
+      "response": "#all_received ::lst [];\n^ch:my_chan ::str buf:5;\n^frk:producer <<\n  ^lp {n:5} ->$i <<\n    ^tx:my_chan {v:\"msg-$i\"}\n  >>\n>>;\n^tmo:10 <<\n  ^lp {n:5} <<\n    ^rx:my_chan ->$current_item;\n    !add @mem {src:#all_received v:$current_item}\n  >>\n>>",
+      "cleaned": "#all_received ::lst [];\n^ch:my_chan ::str buf:5;\n^frk:producer <<\n  ^lp {n:5} ->$i <<\n    ^tx:my_chan {v:\"msg-$i\"}\n  >>\n>>;\n^tmo:10 <<\n  ^lp {n:5} <<\n    ^rx:my_chan ->$current_item;\n    !add @mem {src:#all_received v:$current_item}\n  >>\n>>",
+      "structural": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "balanced": true,
+          "sigil_start": true
+        }
+      },
+      "score": 2,
+      "reason": "The response correctly implements all aspects of the prompt: creating a channel, forking a producer that writes 5 items, and receiving all items within a 10-second timeout. The OpenLang syntax is valid and directly reflects the requested actions and high-level structure."
+    },
+    {
+      "test_id": "r21",
+      "type": "roundtrip",
+      "response": "~err {id:a1x code:E_TIMEOUT lvl:warn msg:\"Operation timed out after 30 seconds.\"}",
+      "cleaned": "~err {id:a1x code:E_TIMEOUT lvl:warn msg:\"Operation timed out after 30 seconds.\"}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -1133,45 +1165,13 @@
         }
       },
       "score": 1,
-      "reason": "The response correctly identifies the 'R.ok.3.' prefix and the data elements. However, the `expected` specified 'in period-delimited format' for the `[...]` part, but the response uses square brackets and comma-separated items (`[`...`,`...`]`)."
-    },
-    {
-      "test_id": "r20",
-      "type": "roundtrip",
-      "response": "`~L2`\n^ch:item_stream ::str\n^frk:item_producer <<\n  ^lp {n:5} ->$i {\n    ^tx:item_stream {v:\"payload-$i\"}\n  }\n>>\n#collected_items:[]\n^tmo:10 <<\n  ^lp {n:5} <<\n    ^rx:item_stream ->$val\n    #collected_items.push($val)\n  >>\n  ^jn [item_producer] ->$producer_status\n>>\n>ok {status:rcv_cmp items:#collected_items prod_stat:$producer_status}",
-      "cleaned": "`~L2`\n^ch:item_stream ::str\n^frk:item_producer <<\n  ^lp {n:5} ->$i {\n    ^tx:item_stream {v:\"payload-$i\"}\n  }\n>>\n#collected_items:[]\n^tmo:10 <<\n  ^lp {n:5} <<\n    ^rx:item_stream ->$val\n    #collected_items.push($val)\n  >>\n  ^jn [item_producer] ->$producer_status\n>>\n>ok {status:rcv_cmp items:#collected_items prod_stat:$producer_status}",
-      "structural": {
-        "valid": true,
-        "errors": [],
-        "checks": {
-          "balanced": true,
-          "sigil_start": true
-        }
-      },
-      "score": 2,
-      "reason": "The response correctly implements all requirements: a channel, a forked producer writing 5 items, and a receiver loop with a 10-second timeout, all in valid OpenLang L2."
-    },
-    {
-      "test_id": "r21",
-      "type": "roundtrip",
-      "response": "{id:a7j ~err {code:E_TIMEOUT lvl:warn msg:\"Operation timed out after 30s.\"} ~retry}",
-      "cleaned": "{id:a7j ~err {code:E_TIMEOUT lvl:warn msg:\"Operation timed out after 30s.\"} ~retry}",
-      "structural": {
-        "valid": true,
-        "errors": [],
-        "checks": {
-          "balanced": true,
-          "sigil_start": true
-        }
-      },
-      "score": 2,
-      "reason": "The response correctly identifies the error as a timeout, provides a descriptive message, includes the `~err` tag, and correctly marks it as retriable with the `~retry` tag, matching all aspects of the expected output described."
+      "reason": "The response correctly identifies it as an error and includes timeout information. However, it misses the explicit instruction to indicate that the error is 'retriable', which would typically be a field like `retriable:true` in OpenLang L2."
     },
     {
       "test_id": "r22",
       "type": "roundtrip",
-      "response": "`?fnd @git unmrg chg {type:branch lmt:10}`",
-      "cleaned": "?fnd @git unmrg chg {type:branch lmt:10}",
+      "response": "?fnd @git {br:true chg:true mrg:!~true} ->$lst lmt:10",
+      "cleaned": "?fnd @git {br:true chg:true mrg:!~true} ->$lst lmt:10",
       "structural": {
         "valid": true,
         "errors": [],
@@ -1181,45 +1181,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly translates all elements of the request into OpenLang L2: `?fnd` for "
+      "reason": "The response accurately translates the English prompt into OpenLang L2, correctly identifying git branches with changes, that are unmerged, and applying the limit of 10. All constraints from the input are met with valid OpenLang L2 syntax."
     },
     {
       "test_id": "r23",
       "type": "roundtrip",
-      "response": "~L2:\n!cpy @fs {p:\"./.env.example\" to:\"./.env\"}\n?fnd @fs {p:\"./.env\"}",
-      "cleaned": "~L2:\n!cpy @fs {p:\"./.env.example\" to:\"./.env\"}\n?fnd @fs {p:\"./.env\"}",
-      "structural": {
-        "valid": true,
-        "errors": [],
-        "checks": {
-          "balanced": true,
-          "sigil_start": true
-        }
-      },
-      "score": 2,
-      "reason": "The response correctly translates the natural language into OpenLang L2. It accurately identifies the copy operation with specific paths and the verification of file existence using `?fnd`, which is a valid and precise OpenLang L2 command for 'verify file exists'. The formatting is correct for OpenLang L2."
-    },
-    {
-      "test_id": "r24",
-      "type": "roundtrip",
-      "response": "{id:rpt1 from:agent1 to:agent2\n >ok {n:100 pnl_pct:5.2 sharpe:1.8 mdd_pct:-3.1 win_n:72}\n}",
-      "cleaned": "{id:rpt1 from:agent1 to:agent2\n >ok {n:100 pnl_pct:5.2 sharpe:1.8 mdd_pct:-3.1 win_n:72}\n}",
-      "structural": {
-        "valid": true,
-        "errors": [],
-        "checks": {
-          "balanced": true,
-          "sigil_start": true
-        }
-      },
-      "score": 2,
-      "reason": "The response correctly parsed all trading metrics from the input and formatted them into a valid OpenLang L2 message using appropriate key-value pairs within the `>ok` block."
-    },
-    {
-      "test_id": "r25",
-      "type": "roundtrip",
-      "response": "`?rd @fs {p:\"package.json\"} ->$pkg; ^if {$pkg.scripts.build} {!run @sh {cmd:$pkg.scripts.build}}`",
-      "cleaned": "?rd @fs {p:\"package.json\"} ->$pkg; ^if {$pkg.scripts.build} {!run @sh {cmd:$pkg.scripts.build}}",
+      "response": "!cpy @fs {src:\"./.env.example\" dst:\"./.env\"}; ?fnd @fs {p:\"./.env\"}",
+      "cleaned": "!cpy @fs {src:\"./.env.example\" dst:\"./.env\"}; ?fnd @fs {p:\"./.env\"}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -1232,10 +1200,10 @@
       "reason": "The model"
     },
     {
-      "test_id": "r26",
+      "test_id": "r24",
       "type": "roundtrip",
-      "response": "`>prt {id:r1x seq:1/1 eof:true res:[{job:lint, st:ok}, {job:test, st:fl, n:2}, {job:build, st:ok}]}`",
-      "cleaned": ">prt {id:r1x seq:1/1 eof:true res:[{job:lint, st:ok}, {job:test, st:fl, n:2}, {job:build, st:ok}]}",
+      "response": "#rpt {type:trades n:100 pnl:0.052 sharpe:1.8 drawdown:-0.031 win:72}",
+      "cleaned": "#rpt {type:trades n:100 pnl:0.052 sharpe:1.8 drawdown:-0.031 win:72}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -1245,13 +1213,45 @@
         }
       },
       "score": 2,
-      "reason": "The model correctly generated an OpenLang L2 partial result (`>prt`) message. It accurately summarized each task's status, including the number of failures for the 'test' task, and maintained valid OpenLang syntax."
+      "reason": "The response correctly uses OpenLang L2 syntax (`#rpt {}`) and accurately translates all provided trading metrics into appropriate key-value pairs, converting percentages to decimals as expected for quantitative data."
+    },
+    {
+      "test_id": "r25",
+      "type": "roundtrip",
+      "response": "?rd @fs {p:\"package.json\"} ->$pkg; ^if {$pkg.scripts.build} {!run @sh {cmd:\"npm run build\"}}",
+      "cleaned": "?rd @fs {p:\"package.json\"} ->$pkg; ^if {$pkg.scripts.build} {!run @sh {cmd:\"npm run build\"}}",
+      "structural": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "balanced": true,
+          "sigil_start": true
+        }
+      },
+      "score": 2,
+      "reason": "The response accurately translates the intent of the prompt into OpenLang L2. It correctly specifies reading 'package.json', checking for the 'build' script, and executing 'npm run build'. The response is more explicit and robust than the 'expected' (e.g., specifying file path and the exact shell command), making it a fully correct and even improved translation."
+    },
+    {
+      "test_id": "r26",
+      "type": "roundtrip",
+      "response": ">prt {lint:ok test:{fl:2} build:ok}",
+      "cleaned": ">prt {lint:ok test:{fl:2} build:ok}",
+      "structural": {
+        "valid": true,
+        "errors": [],
+        "checks": {
+          "balanced": true,
+          "sigil_start": true
+        }
+      },
+      "score": 2,
+      "reason": "The response correctly translates the natural language input into a well-formed OpenLang L2 partial result (`>prt`) with accurate per-task status details, including `ok` for success and nested `{fl:2}` for failures."
     },
     {
       "test_id": "r27",
       "type": "roundtrip",
-      "response": "```openlang\n{id:a1x from:agent to:user t:1709641200\n  ^seq [\n    !run @sh {cmd:\"npm install express\"},\n    !run @sh {cmd:\"npm install cors\"},\n    !run @sh {cmd:\"npm install helmet\"}\n  ]\n}\n```",
-      "cleaned": "{id:a1x from:agent to:user t:1709641200\n  ^seq [\n    !run @sh {cmd:\"npm install express\"},\n    !run @sh {cmd:\"npm install cors\"},\n    !run @sh {cmd:\"npm install helmet\"}\n  ]\n}",
+      "response": "!pkg:install {n:\"express\"}; !pkg:install {n:\"cors\"}; !pkg:install {n:\"helmet\"}",
+      "cleaned": "!pkg:install {n:\"express\"}; !pkg:install {n:\"cors\"}; !pkg:install {n:\"helmet\"}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -1260,14 +1260,14 @@
           "sigil_start": true
         }
       },
-      "score": 2,
-      "reason": "The response correctly uses the `^seq` combinator to run the package installations sequentially, using `!run @sh` for each `npm install` command as expected by the prompt and the description."
+      "score": 1,
+      "reason": "The model correctly identified the `!pkg:install` operation for each package. It also used semicolons, which typically imply sequential execution in OpenLang. However, the `expected` output explicitly requested `^seq` as the top-level construct for sequential execution (`^seq { ... }`), which the model"
     },
     {
       "test_id": "r28",
       "type": "roundtrip",
-      "response": "{id:a1 from:me to:user\n ?fnd @git chg {ref:\"HEAD~1..HEAD\"} ->$lst\n ^ea {$lst} ->$f {!fmt @fs {p:$f}}\n}",
-      "cleaned": "{id:a1 from:me to:user\n ?fnd @git chg {ref:\"HEAD~1..HEAD\"} ->$lst\n ^ea {$lst} ->$f {!fmt @fs {p:$f}}\n}",
+      "response": "?fnd @git chg rcn {p:\".\"} ->$lst | ^ea {$lst} ->$f {!fmt @fs {p:$f}}",
+      "cleaned": "?fnd @git chg rcn {p:\".\"} ->$lst | ^ea {$lst} ->$f {!fmt @fs {p:$f}}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -1277,13 +1277,13 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly translates the English prompt into OpenLang L2. While not identical to the "
+      "reason": "The response accurately translates the prompt into OpenLang. It correctly identifies the "
     },
     {
       "test_id": "r29",
       "type": "roundtrip",
-      "response": "{id:a1x\n~err {code:E_NET_AUTH lvl:fatal msg:\"Authentication failed for network API access.\"}\n}",
-      "cleaned": "{id:a1x\n~err {code:E_NET_AUTH lvl:fatal msg:\"Authentication failed for network API access.\"}\n}",
+      "response": "~err {code:E_AUTH lvl:fatal msg:\"authentication failed for network API access\"}",
+      "cleaned": "~err {code:E_AUTH lvl:fatal msg:\"authentication failed for network API access\"}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -1292,14 +1292,14 @@
           "sigil_start": true
         }
       },
-      "score": 2,
-      "reason": "The response is fully correct. It accurately translates the prompt into valid OpenLang L2 syntax, including the error type (E_NET_AUTH is a good interpretation of 'authentication error for network API'), severity (fatal), and provides additional, reasonable context (id, message). The 'expected' output, conversely, uses non-standard OpenLang L2 syntax for attributes ('with code:'), making the model's response superior in terms of L2 compliance."
+      "score": 1,
+      "reason": "The response correctly identifies the error type, code, and level. However, it uses a curly brace object syntax for the arguments and adds an extra 'msg' field, whereas the expected output uses a more compact 'with' syntax without explicit curly braces and no additional message."
     },
     {
       "test_id": "r30",
       "type": "roundtrip",
-      "response": "{id:a1 from:you to:me\n !del @fs {p:\"logs/*.log\" dry:true}\n}",
-      "cleaned": "{id:a1 from:you to:me\n !del @fs {p:\"logs/*.log\" dry:true}\n}",
+      "response": "!del @fs dry:true {p:\"logs/*.log\"}",
+      "cleaned": "!del @fs dry:true {p:\"logs/*.log\"}",
       "structural": {
         "valid": true,
         "errors": [],
@@ -1309,7 +1309,7 @@
         }
       },
       "score": 2,
-      "reason": "The response correctly translates the natural language input into a valid OpenLang L2 command. It correctly identifies the `!del @fs` command, specifies the path pattern `logs/*.log` for the files, and sets `dry:true` for the dry run operation, matching the expected behavior."
+      "reason": "The model correctly translates the natural language request into a valid OpenLang L2 command. `!del @fs` is correct. `dry:true` correctly represents "
     }
   ]
 }

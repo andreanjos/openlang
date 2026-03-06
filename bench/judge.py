@@ -7,117 +7,25 @@ import json
 # ── Layer 1: Structural checks (deterministic) ──
 
 VALID_SIGILS = {"?", "!", ">", "#", "~", "^"}
-VALID_TOKENS = {
-    "fnd",
-    "mk",
-    "del",
-    "mod",
-    "rd",
-    "wr",
-    "run",
-    "cpy",
-    "mv",
-    "mrg",
-    "tst",
-    "vfy",
-    "prs",
-    "fmt",
-    "snd",
-    "rcv",
-    "fs",
-    "sh",
-    "git",
-    "net",
-    "db",
-    "mem",
-    "env",
-    "usr",
-    "proc",
-    "pkg",
-    "rec",
-    "par",
-    "seq",
-    "dry",
-    "frc",
-    "tmp",
-    "vrb",
-    "sil",
-    "lmt",
-    "dep",
-    "pri",
-    "unq",
-    "neg",
-    "rcn",
-    "lrg",
-    "sml",
-    "chg",
-    "stl",
-    "nw",
-    "old",
-    "act",
-    "idl",
-    "fld",
-    "hlt",
-    "hot",
-    "cld",
-    "str",
-    "int",
-    "bln",
-    "lst",
-    "map",
-    "fn",
-    "pth",
-    "rgx",
-    "err",
-    "nul",
-    "ok",
-    "fl",
-    "prt",
-    "pnd",
-    "skp",
-    "blk",
-    "if",
-    "el",
-    "lp",
-    "ea",
-    "wt",
-    "rt",
-    "br",
-    "ct",
-    "frk",
-    "jn",
-    "lk",
-    "ulk",
-    "ch",
-    "tx",
-    "rx",
-    "tmo",
-    "L1",
-    "L2",
-    "L3",
-    "ack",
-    "hello",
-    "unk",
-    "def",
-    "retry",
-    "sess",
-    "feat",
-    "rej",
-    "openlang",
-}
+
+
+def _strip_strings(text: str) -> str:
+    """Remove quoted string contents to avoid false positives in structural checks."""
+    return re.sub(r'"[^"]*"', '""', text)
 
 
 def check_balanced(text: str) -> list[str]:
-    """Check balanced delimiters."""
+    """Check balanced delimiters (ignoring content inside quoted strings)."""
     errors = []
+    clean = _strip_strings(text)
     pairs = {"{": "}", "[": "]"}
     stack = []
     # Check << >> separately
-    opens = text.count("<<")
-    closes = text.count(">>")
+    opens = clean.count("<<")
+    closes = clean.count(">>")
     if opens != closes:
         errors.append(f"unbalanced << >>: {opens} opens, {closes} closes")
-    for ch in text:
+    for ch in clean:
         if ch in pairs:
             stack.append(pairs[ch])
         elif ch in pairs.values():
@@ -131,18 +39,47 @@ def check_balanced(text: str) -> list[str]:
 
 
 def _strip_fences(text: str) -> str:
-    """Remove markdown code fences and backtick wrapping from model output."""
-    lines = text.strip().split("\n")
-    # Remove ```openlang / ``` fences
-    if lines and lines[0].startswith("```"):
-        lines = lines[1:]
-    if lines and lines[-1].strip() == "```":
-        lines = lines[:-1]
-    result = "\n".join(lines).strip()
+    """Remove markdown code fences, backtick wrapping, and surrounding prose."""
+    text = text.strip()
+
+    # Extract content from code fences if present (handles multiple blocks)
+    fenced = re.findall(r"```(?:\w*)\n(.*?)```", text, re.DOTALL)
+    if fenced:
+        return "\n\n".join(block.strip() for block in fenced)
+
     # Remove single backtick wrapping: `content` -> content
-    if result.startswith("`") and result.endswith("`") and result.count("`") == 2:
-        result = result[1:-1]
-    return result
+    if text.startswith("`") and text.endswith("`") and text.count("`") == 2:
+        return text[1:-1]
+
+    # If there's a mix of prose and OpenLang, try to extract just the OpenLang.
+    # OpenLang lines start with sigils, structural tokens, or L3 uppercase.
+    lines = text.split("\n")
+    ol_lines = []
+    in_openlang = False
+    for line in lines:
+        stripped = line.strip()
+        if not stripped:
+            if in_openlang:
+                ol_lines.append("")
+            continue
+        first = stripped[0]
+        is_ol = (
+            first in VALID_SIGILS
+            or first in ("{", "}", "[", "]", "(", ")", "|", "&", "$", "<")
+            or (first == "-" and len(stripped) > 1 and stripped[1] == "-")
+            or (first == "-" and len(stripped) > 1 and stripped[1] == ">")
+            or (len(stripped) > 1 and first.isupper() and stripped[1] == ".")
+        )
+        if is_ol:
+            in_openlang = True
+            ol_lines.append(line)
+        elif in_openlang:
+            # Could be continuation inside a block — keep it
+            ol_lines.append(line)
+        # Skip leading prose lines
+
+    result = "\n".join(ol_lines).strip()
+    return result if result else text
 
 
 # L3 sigil mapping (single uppercase letter)
@@ -153,19 +90,20 @@ def check_sigil_start(text: str) -> list[str]:
     """Check that statements start with valid sigils."""
     errors = []
     lines = [l.strip() for l in text.strip().split("\n") if l.strip()]
-    in_block = 0  # nesting depth for { } and << >>
+    depth = 0  # nesting depth for { } and << >>
     for line in lines:
-        # Track block depth
-        in_block += line.count("{") + line.count("<<")
-        in_block -= line.count("}") + line.count(">>")
-        # Skip lines that are continuations, comments, or inside blocks
+        # Track block depth (before checking so opens on this line count)
+        clean = _strip_strings(line)
+        depth += clean.count("{") + clean.count("<<")
+        depth -= clean.count("}") + clean.count(">>")
+        # Skip lines that are continuations, comments, or block closers
         if not line or line.startswith("--") or line.startswith(">>"):
             continue
         # Skip lines starting with known structural tokens
         if line[0] in ("{", "}", "[", "]", "(", ")", "|", "&", "$"):
             continue
         # Skip continuation lines inside blocks (key:value pairs, etc)
-        if in_block > 0:
+        if depth > 0:
             continue
         # Skip L1 text content
         if "~L1:" in text and not any(line.startswith(s) for s in VALID_SIGILS):
@@ -216,11 +154,48 @@ Score the response:
 - 1 = partially correct (gist is right but details wrong, or minor syntax issues)
 - 0 = wrong (misunderstood, invalid, or nonsensical)
 
-Respond with ONLY a JSON object: {"score": N, "reason": "brief explanation"}"""
+You MUST respond with ONLY this JSON object and nothing else:
+{"score": N, "reason": "brief explanation"}"""
+
+
+def _parse_judge_response(result: str) -> dict | None:
+    """Try multiple strategies to extract score/reason from judge output."""
+    # Strategy 1: parse a full JSON object containing "score"
+    json_match = re.search(r"\{[^{}]*\"score\"[^{}]*\}", result)
+    if json_match:
+        try:
+            parsed = json.loads(json_match.group())
+            return {
+                "score": int(parsed.get("score", 0)),
+                "reason": str(parsed.get("reason", "no reason")),
+            }
+        except (json.JSONDecodeError, ValueError):
+            pass
+
+    # Strategy 2: flexible key:value extraction (handles single quotes, no quotes, etc)
+    match = re.search(r"[\"']?score[\"']?\s*[:=]\s*(\d)", result)
+    if match:
+        score = int(match.group(1))
+        reason_match = re.search(
+            r"[\"']?reason[\"']?\s*[:=]\s*[\"'](.+?)[\"']", result
+        )
+        reason = reason_match.group(1) if reason_match else result[:150]
+        return {"score": min(score, 2), "reason": reason}
+
+    # Strategy 3: just a bare number on the first line
+    first_line = result.strip().split("\n")[0]
+    match = re.search(r"\b([012])\b", first_line)
+    if match:
+        return {"score": int(match.group(1)), "reason": result[:150]}
+
+    return None
+
+
+MAX_JUDGE_RETRIES = 2
 
 
 async def llm_judge(adapter, test: dict, response: str) -> dict:
-    """Use an LLM to judge semantic correctness."""
+    """Use an LLM to judge semantic correctness, with retry on parse failure."""
     prompt = json.dumps(
         {
             "test_type": test["type"],
@@ -231,37 +206,18 @@ async def llm_judge(adapter, test: dict, response: str) -> dict:
         indent=2,
     )
 
-    try:
-        result = await adapter.complete(JUDGE_PROMPT, prompt)
-        # Try to parse JSON from response
-        # Method 1: find and parse full JSON object
-        json_match = re.search(r'\{[^{}]*"score"[^{}]*\}', result)
-        if json_match:
-            try:
-                parsed = json.loads(json_match.group())
-                return {
-                    "score": int(parsed.get("score", 0)),
-                    "reason": str(parsed.get("reason", "no reason")),
-                }
-            except (json.JSONDecodeError, ValueError):
-                pass
-        # Method 2: regex for score with flexible quoting
-        match = re.search(r'["\']?score["\']?\s*[:=]\s*(\d)', result)
-        if match:
-            score = int(match.group(1))
-            reason_match = re.search(
-                r'["\']?reason["\']?\s*[:=]\s*["\'](.+?)["\']', result
-            )
-            reason = reason_match.group(1) if reason_match else result[:100]
-            return {"score": min(score, 2), "reason": reason}
-        # Method 3: look for just a score number in first line
-        first_line = result.strip().split("\n")[0]
-        match = re.search(r"\b([012])\b", first_line)
-        if match:
-            return {"score": int(match.group(1)), "reason": result[:100]}
-        return {"score": 0, "reason": "judge returned invalid format"}
-    except Exception as e:
-        return {"score": 0, "reason": f"judge error: {str(e)}"}
+    last_error = ""
+    for attempt in range(MAX_JUDGE_RETRIES + 1):
+        try:
+            result = await adapter.complete(JUDGE_PROMPT, prompt)
+            parsed = _parse_judge_response(result)
+            if parsed is not None:
+                return parsed
+            last_error = f"judge returned invalid format (attempt {attempt + 1}): {result[:100]}"
+        except Exception as e:
+            last_error = f"judge error: {str(e)}"
+
+    return {"score": 0, "reason": last_error}
 
 
 async def score_test(judge_adapter, test: dict, response: str) -> dict:

@@ -4,6 +4,8 @@ A compact, layered language for AI-to-AI communication. Designed for maximum tok
 
 Taught via a bootstrap skill at session start — every agent gets the full current spec.
 
+**Benchmark (v0.3):** 94-97% accuracy across Codex and Gemini. 3x median token compression (up to 15x on complex messages).
+
 ## Install
 
 ### OpenClaw
@@ -144,11 +146,12 @@ Use `<< >>` for multi-statement or deeply nested bodies. `{}` remains for parame
 
 ### Scoped Actions
 
-Disambiguate actions across scopes with `scope:action`:
+Use `scope:action` to disambiguate and for scope-specific operations. Prefer this over generic action + scope:
 
 ```
-!git:mrg {src:"main" dst:"dev"}
-!db:mrg {tbl:"users" on:"id"}
+!git:mrg {src:"main" dst:"dev"}         -- preferred over !mrg @git
+!db:mrg {tbl:"users" on:"id"}           -- preferred over !mrg @db
+!pkg:install {n:"express"}               -- preferred over !run @sh {cmd:"npm install"}
 ```
 
 ## Vocabulary
@@ -190,7 +193,7 @@ Disambiguate actions across scopes with `scope:action`:
 
 ### Qualifiers
 
-State descriptors that modify scopes or appear in `#` data blocks. Stack left-to-right:
+State descriptors that filter queries or describe state. Place **before** the param block, after the scope. Stack left-to-right:
 
 | Token | Meaning   | Token | Meaning      |
 | ----- | --------- | ----- | ------------ |
@@ -203,8 +206,9 @@ State descriptors that modify scopes or appear in `#` data blocks. Stack left-to
 | `cld` | cold/rare |       |              |
 
 ```
-?fnd @fs chg rcn {p:"src/**/*.ts"}
-#sys {cpu:act mem:72% disk:hlt net:idl}
+?fnd @fs chg rcn {p:"src/**/*.ts"}       -- qualifiers before {}
+?fnd @db fld rcn {tbl:"trades" lmt:50}   -- failed + recent
+#sys {cpu:act mem:72% disk:hlt net:idl}   -- in state blocks, qualifiers are values
 ```
 
 ### Types (:: annotations)
@@ -270,17 +274,26 @@ Chain with `->` pipes, sequence with `;` or newlines:
 
 ## L3 Bytecode
 
-Positional, period-delimited. Backtick-quote fields containing literal periods:
+**Strictly positional, period-delimited.** No key:value pairs — position determines meaning. Backtick-quote fields containing literal periods:
 
 ```
-Q.fs.fnd.`app.config.ts`.rec
-R.ok.3.[`src/a.ts`:5,`src/b.ts`:12]
-Q.fs.fnd.*.ts.rec.3                  -- no backticks needed without periods
+Format: SIGIL.scope.action.target.modifiers
+
+Q.fs.fnd.`app.config.ts`.rec            -- query: find, recursive
+R.ok.3.[`src/a.ts`:5,`src/b.ts`:12]     -- result: 3 matches (:N = line number)
+Q.fs.fnd.*.ts.rec.3                      -- no backticks needed without periods
+C.sh.run.`npm test`                      -- command: run shell command
 ```
 
 ## Message Envelope
 
+Envelopes are for **routed inter-agent messages** where you need addressing, tracking, or references. For standalone commands and direct responses, use bare OpenLang:
+
 ```
+-- Bare (standalone / direct response):
+!del @fs {p:"tmp/"} rec frc
+
+-- Enveloped (routed between agents):
 {id:a3x from:agent1 to:agent2 t:1709641200 ttl_ms:5000
  ~L2
  !fnd @fs {p:"src/**" rgx:"TODO"} ->$lst lmt:20
@@ -309,13 +322,16 @@ For large payloads, use `>prt` with sequence tracking:
 Errors include structured codes and severity:
 
 ```
-~err {id:a3x code:E_PARSE lvl:warn msg:"unknown token: xyz"}
-~err {id:b2f code:E_FS_NOT_FOUND lvl:fatal msg:"missing core config"}
-~retry {id:a3x ~L1}
+~err {code:E_PARSE lvl:warn msg:"unknown token: xyz"}
+~err {code:E_FS_NOT_FOUND lvl:fatal msg:"missing core config"}
+~err {code:E_TIMEOUT lvl:warn msg:"30s exceeded"}
+~retry {ref:&a3x}                        -- retriable: please retry
 ```
 
-Code namespaces: `E_PARSE`, `E_FS_*`, `E_SH_*`, `E_NET_*`, `E_DB_*`, `E_AUTH`.
+Code namespaces: `E_PARSE`, `E_FS_*`, `E_SH_*`, `E_NET_*`, `E_DB_*`, `E_AUTH`, `E_TIMEOUT`.
 Severity: `info`, `warn`, `fatal`.
+
+Use `~retry` to explicitly signal retriability. `~err` alone means non-retriable.
 
 ## Token Extension
 
@@ -329,8 +345,8 @@ Agents can define new tokens inline during a session:
 ### Agent Handshake
 
 ```
-~hello {id:bot1 ~cap {L:[1,2,3] ext:[fs,git,sh,net]} ver:0.2}
-~hello {id:bot2 ~cap {L:[1,2] ext:[fs,db]} ver:0.2}
+~hello {id:bot1 ~cap {L:[1,2,3] ext:[fs,git,sh,net]} ver:0.3}
+~hello {id:bot2 ~cap {L:[1,2] ext:[fs,db]} ver:0.3}
 ```
 
 ## How It Works in OpenClaw

@@ -1,15 +1,15 @@
 ---
 name: openlang
-description: Compact AI-to-AI communication protocol. Use when spawning sub-agents, sending inter-agent messages via sessions_send/sessions_spawn, or when instructed to speak OpenLang. Reduces token usage 5-10x on agent-to-agent channels.
+description: Compact AI-to-AI communication protocol. Use when spawning sub-agents, sending inter-agent messages via sessions_send/sessions_spawn, or when instructed to speak OpenLang. Reduces token usage 3-10x on agent-to-agent channels.
 metadata:
   {
     "openclaw": { "emoji": "🗜️" },
   }
 ---
 
-# OpenLang — Compact Agent-to-Agent Protocol
+# OpenLang v0.3 — Compact Agent-to-Agent Protocol
 
-When communicating with other agents (via `sessions_spawn`, `sessions_send`, or announce), use OpenLang to compress messages 5-10x. Default to L2 for all agent-to-agent communication.
+When communicating with other agents (via `sessions_spawn`, `sessions_send`, or announce), use OpenLang to compress messages 3-10x. Default to L2 for all agent-to-agent communication.
 
 ## When to Use
 
@@ -57,11 +57,18 @@ Bind with `->$name`, use with `$name`. Property access: `$var.field`.
 
 **Scopes:** `@fs` filesystem · `@sh` shell · `@git` git · `@net` network · `@db` database · `@mem` memory · `@env` environment · `@usr` user · `@proc` process · `@pkg` packages
 
-**Scoped actions:** `scope:action` — `!git:mrg` vs `!db:mrg`
+**Scoped actions:** Prefer `scope:action` for scope-specific operations:
+
+```
+!git:mrg {src:"feature" dst:"main"}     -- NOT !mrg @git
+!pkg:install {n:"express"}               -- NOT !run @sh {cmd:"npm install"}
+```
 
 **Modifiers:** `rec` recursive · `par` parallel · `seq` sequential · `dry` dry-run · `frc` force · `tmp` temp · `vrb` verbose · `sil` silent · `lmt` limit · `dep` depth · `pri` priority · `unq` unique · `neg` negate
 
-**Qualifiers:** `rcn` recent · `lrg` large · `sml` small · `chg` changed · `stl` stale · `nw` new · `old` old · `act` active · `idl` idle · `fld` failed · `hlt` healthy · `hot` hot · `cld` cold
+**Qualifiers** — place before param block, after scope: `?fnd @fs chg rcn {p:"src/**"}`
+
+`rcn` recent · `lrg` large · `sml` small · `chg` changed · `stl` stale · `nw` new · `old` old · `act` active · `idl` idle · `fld` failed · `hlt` healthy · `hot` hot · `cld` cold
 
 **Types:** `str` · `int` · `bln` · `lst` · `map` · `fn` · `pth` · `rgx` · `err` · `nul`
 
@@ -85,7 +92,7 @@ Bind with `->$name`, use with `$name`. Property access: `$var.field`.
 ^tmo:N                               -- timeout (seconds)
 ```
 
-`<< >>` for multi-statement bodies:
+`<< >>` for multi-statement bodies. Always close `>>`:
 
 ```
 ^ea {$files} ->$f <<
@@ -106,10 +113,13 @@ Chain with `->` pipes, sequence with `;` or newlines:
 
 ```
 ~err {code:E_PARSE lvl:warn msg:"unknown token"}
-~err {code:E_FS_NOT_FOUND lvl:fatal msg:"missing config"}
+~err {code:E_TIMEOUT lvl:warn msg:"30s exceeded"}
+~retry {ref:&a3x}                        -- retriable: please retry
 ```
 
-Codes: `E_PARSE` `E_FS_*` `E_SH_*` `E_NET_*` `E_DB_*` `E_AUTH`. Levels: `info` `warn` `fatal`.
+Codes: `E_PARSE` `E_FS_*` `E_SH_*` `E_NET_*` `E_DB_*` `E_AUTH` `E_TIMEOUT`. Levels: `info` `warn` `fatal`.
+
+Use `~retry` to signal retriability. `~err` alone = non-retriable.
 
 ## Token Extension
 
@@ -120,11 +130,12 @@ Codes: `E_PARSE` `E_FS_*` `E_SH_*` `E_NET_*` `E_DB_*` `E_AUTH`. Levels: `info` `
 
 ## L3 Bytecode
 
-Positional, period-delimited. Backtick-quote fields with periods:
+**Strictly positional, period-delimited.** No key:value pairs. Backtick-quote fields with periods:
 
 ```
-Q.fs.fnd.`app.config.ts`.rec
+Q.fs.fnd.`app.config.ts`.rec            -- :N after filename = line number
 R.ok.3.[`src/a.ts`:5,`src/b.ts`:12]
+C.sh.run.`npm test`
 ```
 
 ## OpenClaw Integration Examples
@@ -154,7 +165,7 @@ R.ok.3.[`src/a.ts`:5,`src/b.ts`:12]
 ```
 -- Agent A -> Agent B
 ~openlang
-?fnd @db {tbl:trades rcn lmt:100} ->$trades
+?fnd @db fld rcn {tbl:trades lmt:100} ->$trades
 !prs @mem {src:$trades k:pnl} ->$analysis
 >ok {$analysis}
 
@@ -170,5 +181,9 @@ R.ok.3.[`src/a.ts`:5,`src/b.ts`:12]
 2. Use normal language for human-facing channels (Telegram, Slack, etc).
 3. Prefix with `~openlang` so receivers know to parse as OpenLang.
 4. Drop to L1 when grammar can't express a concept. Return to L2 immediately.
-5. Use `$` for all variable references.
-6. Extend vocabulary with `~def` — don't break grammar for new ideas.
+5. Prefer scoped actions (`!git:mrg`) over generic action + scope.
+6. Place qualifiers before param blocks: `?fnd @fs chg rcn {p:...}`.
+7. Envelopes only for routed messages. Bare OpenLang for direct responses.
+8. Use `$` for all variable references.
+9. Extend vocabulary with `~def` — don't break grammar for new ideas.
+10. Close every `<<` with `>>` and every `{` with `}`.

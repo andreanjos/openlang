@@ -1,0 +1,8 @@
+{
+  "name": "openlang",
+  "description": "Compact AI-to-AI communication protocol. Reduces token usage 5-10x on agent-to-agent channels via a learnable three-tier compression language.",
+  "author": {
+    "name": "Andre Anjos",
+    "email": "a@r.ac"
+  }
+}

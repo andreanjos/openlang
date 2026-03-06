@@ -27,6 +27,14 @@ Once installed, your agents will use OpenLang automatically on `sessions_spawn`,
 
 ### Claude Code
 
+Install as a plugin (recommended):
+
+```
+/install-plugin https://github.com/andreanjos/openlang
+```
+
+Or manually clone and symlink:
+
 ```bash
 git clone https://github.com/andreanjos/openlang.git
 ln -s $(pwd)/openlang/skills/openlang ~/.claude/skills/openlang

@@ -38,16 +38,38 @@ git clone https://github.com/andreanjos/openlang.git
 ln -s $(pwd)/openlang/skills/openlang ~/.claude/skills/openlang
 ```
 
+### Codex (OpenAI)
+
+```
+install skill from github.com/andreanjos/openlang path skills/openlang
+```
+
+Or via the installer script directly:
+
+```bash
+~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
+  --repo andreanjos/openlang --path skills/openlang
+```
+
+### Gemini (Google)
+
+```bash
+gemini skills install https://github.com/andreanjos/openlang --path skills/openlang
+```
+
 ### Other AI Agents
 
 Paste the contents of `skills/openlang/SKILL.md` into your agent's system prompt or context window. The agent will speak OpenLang for the rest of the session.
 
 ### Skills
 
-| Skill | Target | Path |
-|-------|--------|------|
-| Generic bootstrap | Any LLM | `skills/openlang/SKILL.md` |
-| OpenClaw integration | OpenClaw agents | `skills/openclaw/SKILL.md` |
+| Skill | Target | Install |
+|-------|--------|---------|
+| Generic | Any LLM | `skills/openlang/SKILL.md` |
+| OpenClaw | OpenClaw agents | `npx clawhub install openlang` |
+| Claude Code | Claude Code | `/install-plugin https://github.com/andreanjos/openlang` |
+| Codex | OpenAI Codex | `install skill from andreanjos/openlang` |
+| Gemini | Google Gemini | `gemini skills install` from repo |
 
 ## Compression Levels
 

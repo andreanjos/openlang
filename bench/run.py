@@ -85,9 +85,7 @@ async def run_model(
     sem = asyncio.Semaphore(concurrency)
     print(f"\n  Running {len(tests)} tests against {adapter.name}...")
 
-    tasks = [
-        run_test(adapter, judge_adapter, skill, test, sem) for test in tests
-    ]
+    tasks = [run_test(adapter, judge_adapter, skill, test, sem) for test in tests]
     results = await asyncio.gather(*tasks)
 
     # Tally scores
@@ -137,9 +135,9 @@ def print_summary(reports: list[dict]):
         rt = s.get("roundtrip", {})
         print(
             f"{r['model']:<25} "
-            f"{c.get('correct',0)}/{c.get('total',0)} ({c.get('pct',0):>4.0f}%) "
-            f"{g.get('correct',0)}/{g.get('total',0)} ({g.get('pct',0):>4.0f}%) "
-            f"{rt.get('correct',0)}/{rt.get('total',0)} ({rt.get('pct',0):>4.0f}%) "
+            f"{c.get('correct', 0)}/{c.get('total', 0)} ({c.get('pct', 0):>4.0f}%) "
+            f"{g.get('correct', 0)}/{g.get('total', 0)} ({g.get('pct', 0):>4.0f}%) "
+            f"{rt.get('correct', 0)}/{rt.get('total', 0)} ({rt.get('pct', 0):>4.0f}%) "
             f"{r['overall_pct']:>6.1f}%"
         )
     print("=" * 75)
@@ -171,9 +169,9 @@ def write_results(reports: list[dict]):
         rt = s.get("roundtrip", {})
         lines.append(
             f"| {r['model']} "
-            f"| {c.get('correct',0)}/{c.get('total',0)} ({c.get('pct',0):.0f}%) "
-            f"| {g.get('correct',0)}/{g.get('total',0)} ({g.get('pct',0):.0f}%) "
-            f"| {rt.get('correct',0)}/{rt.get('total',0)} ({rt.get('pct',0):.0f}%) "
+            f"| {c.get('correct', 0)}/{c.get('total', 0)} ({c.get('pct', 0):.0f}%) "
+            f"| {g.get('correct', 0)}/{g.get('total', 0)} ({g.get('pct', 0):.0f}%) "
+            f"| {rt.get('correct', 0)}/{rt.get('total', 0)} ({rt.get('pct', 0):.0f}%) "
             f"| {r['overall_pct']:.1f}% |"
         )
     lines.append("")
@@ -185,7 +183,9 @@ def write_results(reports: list[dict]):
             lines.append(f"### {r['model']} — Failures ({len(failures)})")
             lines.append("")
             for f in failures:
-                lines.append(f"- **{f['test_id']}** ({f['type']}): {f.get('reason', 'unknown')}")
+                lines.append(
+                    f"- **{f['test_id']}** ({f['type']}): {f.get('reason', 'unknown')}"
+                )
             lines.append("")
 
     summary_path = RESULTS_DIR / "summary.md"
@@ -196,15 +196,20 @@ def write_results(reports: list[dict]):
 async def main():
     parser = argparse.ArgumentParser(description="OpenLang Benchmark")
     parser.add_argument(
-        "--models", nargs="*", default=None,
+        "--models",
+        nargs="*",
+        default=None,
         help="Models to test (claude, codex, gemini). Default: all",
     )
     parser.add_argument(
-        "--concurrency", type=int, default=10,
+        "--concurrency",
+        type=int,
+        default=10,
         help="Max concurrent requests per model (default: 10)",
     )
     parser.add_argument(
-        "--judge", default="gemini",
+        "--judge",
+        default="gemini",
         help="Judge model (codex, gemini). Default: gemini",
     )
     args = parser.parse_args()

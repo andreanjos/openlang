@@ -21,13 +21,18 @@ async def _run_cli(cmd: list[str], timeout: int = 90) -> str:
         stderr=asyncio.subprocess.PIPE,
     )
     stdout, stderr = await asyncio.wait_for(
-        proc.communicate(), timeout=timeout,
+        proc.communicate(),
+        timeout=timeout,
     )
     out = stdout.decode().strip()
     if proc.returncode != 0 and not out:
         err = stderr.decode().strip()
         # Filter out Node deprecation warnings
-        err_lines = [l for l in err.split("\n") if "DeprecationWarning" not in l and "trace-deprecation" not in l]
+        err_lines = [
+            l
+            for l in err.split("\n")
+            if "DeprecationWarning" not in l and "trace-deprecation" not in l
+        ]
         raise RuntimeError("\n".join(err_lines)[:200])
     return out
 
@@ -49,7 +54,11 @@ class CodexAdapter(ModelAdapter):
         path = _write_temp(full_prompt)
         try:
             return await _run_cli(
-                ["codex", "exec", f"Read the file {path} and follow the instructions inside. Output your response to stdout only."],
+                [
+                    "codex",
+                    "exec",
+                    f"Read the file {path} and follow the instructions inside. Output your response to stdout only.",
+                ],
                 timeout=90,
             )
         finally:
@@ -61,17 +70,19 @@ class GeminiAdapter(ModelAdapter):
         self.name = model
         self.model = model
         from google import genai
+
         self.client = genai.Client()
 
     async def complete(self, system: str, prompt: str) -> str:
         from google.genai import types
+
         response = await asyncio.to_thread(
             self.client.models.generate_content,
             model=self.model,
             contents=prompt,
             config=types.GenerateContentConfig(
                 system_instruction=system,
-                max_output_tokens=1024,
+                max_output_tokens=4096,
             ),
         )
         return response.text

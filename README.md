@@ -4,6 +4,45 @@ A compact, layered language for AI-to-AI communication. Designed for maximum tok
 
 Taught via a bootstrap skill at session start — every agent gets the full current spec.
 
+## Install
+
+### OpenClaw
+
+Copy the skill into your workspace skills directory:
+
+```bash
+cp -r skills/openclaw /path/to/your/workspace/skills/openlang
+```
+
+Or clone and symlink:
+
+```bash
+git clone https://github.com/andreanjos/openlang.git
+ln -s $(pwd)/openlang/skills/openclaw /path/to/your/workspace/skills/openlang
+```
+
+Verify: `openclaw skills info openlang`
+
+Once installed, your agents will use OpenLang automatically on `sessions_spawn`, `sessions_send`, and announce channels — saving 5-10x tokens on every inter-agent message.
+
+### Claude Code
+
+```bash
+git clone https://github.com/andreanjos/openlang.git
+ln -s $(pwd)/openlang/skills/openlang ~/.claude/skills/openlang
+```
+
+### Other AI Agents
+
+Paste the contents of `skills/openlang/SKILL.md` into your agent's system prompt or context window. The agent will speak OpenLang for the rest of the session.
+
+### Skills
+
+| Skill | Target | Path |
+|-------|--------|------|
+| Generic bootstrap | Any LLM | `skills/openlang/SKILL.md` |
+| OpenClaw integration | OpenClaw agents | `skills/openclaw/SKILL.md` |
+
 ## Compression Levels
 
 | Level | Name | Compression | Use Case |
@@ -265,6 +304,47 @@ Agents can define new tokens inline during a session:
 ~hello {id:bot1 ~cap {L:[1,2,3] ext:[fs,git,sh,net]} ver:0.2}
 ~hello {id:bot2 ~cap {L:[1,2] ext:[fs,db]} ver:0.2}
 ```
+
+## How It Works in OpenClaw
+
+OpenLang compresses the three main inter-agent channels:
+
+**`sessions_spawn` (task delegation):**
+```
+-- Instead of: "Search all recently changed TypeScript files excluding tests
+-- for TODO comments, read each one, and summarize what you find"
+
+~openlang
+?fnd @fs chg rcn {p:"src/**/*.ts" p:!~"*.test.ts" rgx:"TODO"} ->$lst
+^ea ->$f {!rd @fs {p:$f} ->$content; !prs @mem {src:$content k:"todos"}}
+>ok {summary:true fmt:map}
+```
+
+**`sessions_send` (agent-to-agent messaging):**
+```
+-- Agent A -> Agent B
+~openlang
+?fnd @db {tbl:trades rcn lmt:100} ->$trades
+!prs @mem {src:$trades k:pnl} ->$analysis
+>ok {$analysis}
+
+-- Agent B -> Agent A
+~openlang
+>ok {pnl:+2.3% win_rate:0.68 sharpe:1.42 trades:100
+ top:{sym:"AAPL" pnl:+890} worst:{sym:"TSLA" pnl:-340}}
+```
+
+**Announce results:**
+```
+~openlang
+>ok {n:12 todos:[
+  {f:"src/api.ts" ln:42 msg:"refactor auth flow"},
+  {f:"src/db.ts" ln:18 msg:"add connection pooling"}
+] truncated:10}
+~L1: most TODOs are in api.ts and db.ts, concentrated around auth and connection handling
+```
+
+Agents use `~openlang` prefix so receivers know to parse compressed format. Normal language is used for human-facing channels (Telegram, Slack, etc).
 
 ## Learning OpenLang
 

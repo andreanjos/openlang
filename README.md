@@ -8,17 +8,15 @@ Taught via a bootstrap skill at session start — every agent gets the full curr
 
 ### OpenClaw
 
-Copy the skill into your workspace skills directory:
-
 ```bash
-cp -r skills/openclaw /path/to/your/workspace/skills/openlang
+npx clawhub install openlang
 ```
 
-Or clone and symlink:
+Or manually copy into your workspace:
 
 ```bash
 git clone https://github.com/andreanjos/openlang.git
-ln -s $(pwd)/openlang/skills/openclaw /path/to/your/workspace/skills/openlang
+cp -r openlang/skills/openclaw /path/to/your/workspace/skills/openlang
 ```
 
 Verify: `openclaw skills info openlang`
